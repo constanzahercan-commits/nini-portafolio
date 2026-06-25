@@ -65,8 +65,8 @@
   @keyframes nm-spin{ from{ transform:rotate(0); } to{ transform:rotate(360deg); } }
   @keyframes nm-rise{ from{ opacity:0; transform:translateY(40px); } to{ opacity:1; transform:none; } }
   @keyframes nm-menu-in{ from{ opacity:0; transform:translateY(-12px); } to{ opacity:1; transform:none; } }
-  @media(max-width:640px){ .nm-nav-links{ display:none !important; } .nm-burger{ display:flex !important; } }
-  @media(min-width:641px){ .nm-burger{ display:none !important; } .nm-mob-menu{ display:none !important; } }
+  @media(max-width:640px){ .nm-nav-links{ display:none !important; } .nm-burger-wrap{ display:flex !important; } }
+  @media(min-width:641px){ .nm-burger-wrap{ display:none !important; } .nm-mob-menu{ display:none !important; } }
 </style>
 </helmet>
 <div style="--brand: {{ brand }}; --paper: {{ paper }}; background:var(--paper,#F4EFE6); color:#141414; font-family:'Instrument Sans',system-ui,sans-serif; min-height:100vh; overflow-x:hidden; position:relative;">
@@ -82,7 +82,7 @@
   <!-- NAV -->
   <nav style="position:fixed; top:0; left:0; right:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:18px clamp(20px,5vw,64px); backdrop-filter:blur(10px); background:color-mix(in srgb, var(--paper,#F4EFE6) 72%, transparent); border-bottom:1px solid rgba(20,20,20,.08);">
     <a href="#top" style="font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:26px; letter-spacing:-.04em; color:#141414; text-decoration:none; display:flex; align-items:center; gap:8px;">nini<span style="display:inline-block; width:9px; height:9px; border-radius:50%; background:var(--brand,#FF2E88);"></span></a>
-    <div style="display:flex; align-items:center; gap:clamp(14px,2.5vw,34px);">
+    <div class="nm-nav-links" style="display:flex; align-items:center; gap:clamp(14px,2.5vw,34px);">
       <a href="#work" style="font-size:15px; font-weight:500; color:#141414; text-decoration:none; opacity:.8;" style-hover="opacity:1; color:var(--brand,#FF2E88);">{{ t.nav.projects }}</a>
       <a href="#about" style="font-size:15px; font-weight:500; color:#141414; text-decoration:none; opacity:.8;" style-hover="opacity:1; color:var(--brand,#FF2E88);">{{ t.nav.about }}</a>
       <a href="#contact" style="font-size:15px; font-weight:500; color:#141414; text-decoration:none; opacity:.8;" style-hover="opacity:1; color:var(--brand,#FF2E88);">{{ t.nav.contact }}</a>
@@ -90,11 +90,16 @@
         <span style="opacity:.55;">{{ langCurrent }}</span>/<span>{{ langOther }}</span>
       </button>
     </div>
-    <button onClick="{{ toggleMenu }}" class="nm-burger" aria-label="Menú" style="display:none; cursor:pointer; background:none; border:none; padding:6px; flex-direction:column; gap:5px; justify-content:center; align-items:center;">
-      <span style="display:block; width:24px; height:2px; background:#141414; border-radius:2px;"></span>
-      <span style="display:block; width:24px; height:2px; background:#141414; border-radius:2px;"></span>
-      <span style="display:block; width:24px; height:2px; background:#141414; border-radius:2px;"></span>
-    </button>
+    <div class="nm-burger-wrap" style="display:none; align-items:center; gap:10px;">
+      <button onClick="{{ toggle }}" style="font-family:'Space Mono',monospace; font-weight:700; font-size:12px; letter-spacing:.04em; cursor:pointer; background:#141414; color:#fff; border:none; border-radius:100px; padding:8px 13px; display:flex; align-items:center; gap:5px;" style-hover="background:var(--brand,#FF2E88);">
+        <span style="opacity:.55;">{{ langCurrent }}</span>/<span>{{ langOther }}</span>
+      </button>
+      <button onClick="{{ toggleMenu }}" aria-label="Menú" style="cursor:pointer; background:none; border:none; padding:6px; display:flex; flex-direction:column; gap:5px; justify-content:center; align-items:center;">
+        <span style="display:block; width:24px; height:2px; background:#141414; border-radius:2px;"></span>
+        <span style="display:block; width:24px; height:2px; background:#141414; border-radius:2px;"></span>
+        <span style="display:block; width:24px; height:2px; background:#141414; border-radius:2px;"></span>
+      </button>
+    </div>
   </nav>
   <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
     <div class="nm-mob-menu" style="position:fixed; inset:0; z-index:49; background:var(--paper,#F4EFE6); display:flex; flex-direction:column; justify-content:center; align-items:center; gap:clamp(28px,6vw,48px); padding:100px 40px 60px; animation:nm-menu-in .25s ease;">
