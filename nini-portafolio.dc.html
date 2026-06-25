@@ -64,6 +64,9 @@
   @keyframes nm-blob{ 0%,100%{ border-radius:46% 54% 60% 40% / 52% 44% 56% 48%; } 50%{ border-radius:62% 38% 42% 58% / 40% 60% 40% 60%; } }
   @keyframes nm-spin{ from{ transform:rotate(0); } to{ transform:rotate(360deg); } }
   @keyframes nm-rise{ from{ opacity:0; transform:translateY(40px); } to{ opacity:1; transform:none; } }
+  @keyframes nm-menu-in{ from{ opacity:0; transform:translateY(-12px); } to{ opacity:1; transform:none; } }
+  @media(max-width:640px){ .nm-nav-links{ display:none !important; } .nm-burger{ display:flex !important; } }
+  @media(min-width:641px){ .nm-burger{ display:none !important; } .nm-mob-menu{ display:none !important; } }
 </style>
 </helmet>
 <div style="--brand: {{ brand }}; --paper: {{ paper }}; background:var(--paper,#F4EFE6); color:#141414; font-family:'Instrument Sans',system-ui,sans-serif; min-height:100vh; overflow-x:hidden; position:relative;">
@@ -87,7 +90,22 @@
         <span style="opacity:.55;">{{ langCurrent }}</span>/<span>{{ langOther }}</span>
       </button>
     </div>
+    <button onClick="{{ toggleMenu }}" class="nm-burger" aria-label="Menú" style="display:none; cursor:pointer; background:none; border:none; padding:6px; flex-direction:column; gap:5px; justify-content:center; align-items:center;">
+      <span style="display:block; width:24px; height:2px; background:#141414; border-radius:2px;"></span>
+      <span style="display:block; width:24px; height:2px; background:#141414; border-radius:2px;"></span>
+      <span style="display:block; width:24px; height:2px; background:#141414; border-radius:2px;"></span>
+    </button>
   </nav>
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div class="nm-mob-menu" style="position:fixed; inset:0; z-index:49; background:var(--paper,#F4EFE6); display:flex; flex-direction:column; justify-content:center; align-items:center; gap:clamp(28px,6vw,48px); padding:100px 40px 60px; animation:nm-menu-in .25s ease;">
+      <a href="#work" onClick="{{ closeMenu }}" style="font-family:'Bricolage Grotesque',sans-serif; font-size:clamp(40px,10vw,64px); font-weight:800; color:#141414; text-decoration:none; letter-spacing:-.03em;" style-hover="color:var(--brand,#FF2E88);">{{ t.nav.projects }}</a>
+      <a href="#about" onClick="{{ closeMenu }}" style="font-family:'Bricolage Grotesque',sans-serif; font-size:clamp(40px,10vw,64px); font-weight:800; color:#141414; text-decoration:none; letter-spacing:-.03em;" style-hover="color:var(--brand,#FF2E88);">{{ t.nav.about }}</a>
+      <a href="#contact" onClick="{{ closeMenu }}" style="font-family:'Bricolage Grotesque',sans-serif; font-size:clamp(40px,10vw,64px); font-weight:800; color:#141414; text-decoration:none; letter-spacing:-.03em;" style-hover="color:var(--brand,#FF2E88);">{{ t.nav.contact }}</a>
+      <button onClick="{{ toggle }}" style="font-family:'Space Mono',monospace; font-weight:700; font-size:14px; letter-spacing:.04em; cursor:pointer; background:#141414; color:#fff; border:none; border-radius:100px; padding:12px 22px; margin-top:8px;" style-hover="background:var(--brand,#FF2E88);">
+        <span style="opacity:.55;">{{ langCurrent }}</span>/<span>{{ langOther }}</span>
+      </button>
+    </div>
+  </sc-if>
 
   <!-- HERO -->
   <header id="top" data-screen-label="Hero" style="position:relative; min-height:100vh; display:flex; flex-direction:column; justify-content:center; padding:120px clamp(20px,5vw,64px) 60px;">
@@ -225,7 +243,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#FF2E88&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#FF2E88&quot;,&quot;#E0331C&quot;,&quot;#7A3CFF&quot;,&quot;#0A0A0A&quot;]},&quot;paper&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#F4EFE6&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#F4EFE6&quot;,&quot;#FFFFFF&quot;,&quot;#EFE9DC&quot;,&quot;#11110F&quot;]}}">
 class Component extends DCLogic {
-  state = { lang: 'es', openIndex: null };
+  state = { lang: 'es', openIndex: null, menuOpen: false };
 
   componentDidMount() {
     try { const s = localStorage.getItem('nini_lang'); if (s === 'es' || s === 'en') this.setState({ lang: s }); } catch (e) {}
@@ -245,6 +263,7 @@ class Component extends DCLogic {
       if (!el.__nmObs) { el.__nmObs = true; this.io.observe(el); }
     });
   }
+  toggleMenu() { this.setState({ menuOpen: !this.state.menuOpen }); }
   toggleLang() {
     const lang = this.state.lang === 'es' ? 'en' : 'es';
     try { localStorage.setItem('nini_lang', lang); } catch (e) {}
@@ -373,7 +392,10 @@ class Component extends DCLogic {
       marqueeLoop: t.marquee.concat(t.marquee),
       langCurrent: lang.toUpperCase(),
       langOther: lang === 'es' ? 'EN' : 'ES',
-      toggle: () => this.toggleLang()
+      toggle: () => this.toggleLang(),
+      toggleMenu: () => this.toggleMenu(),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      menuOpen: this.state.menuOpen
     };
   }
 
