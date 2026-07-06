@@ -1,5 +1,7 @@
 # nini — Portafolio · Constanza Hernández
 
+_Última actualización: 2026-07-05_
+
 Portafolio web bilingüe (ES/EN), una sola página con scroll, 8 proyectos con
 galería ampliable, hero animado y selector de idioma con persistencia.
 
