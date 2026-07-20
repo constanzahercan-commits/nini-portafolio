@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,7 +27,8 @@
 <meta name="ext-resource-dependency" content="assets/hd/a16.jpg">
 <meta name="ext-resource-dependency" content="assets/hd/a17.jpg">
 <meta name="ext-resource-dependency" content="assets/hd/a18.jpg">
-<meta name="ext-resource-dependency" content="assets/photo-new.jpg">
+<meta name="ext-resource-dependency" content="assets/foto-flores.jpeg">
+<meta name="ext-resource-dependency" content="assets/cv.pdf">
 <meta name="ext-resource-dependency" content="assets/sj/web01.jpg">
 <meta name="ext-resource-dependency" content="assets/sj/web02.jpg">
 <meta name="ext-resource-dependency" content="assets/sj/web03.jpg">
@@ -46,11 +47,11 @@
 <meta property="og:title" content="nini — Portafolio · Constanza Hernández">
 <meta property="og:description" content="Diseñadora gráfica · UX/UI · Front-end · Docencia">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://constanzahercan-commits.github.io/nini-portafolio/">
-<meta property="og:image" content="https://constanzahercan-commits.github.io/nini-portafolio/assets/hd/a00.jpg">
+<meta property="og:url" content="https://ninidesign.cl/">
+<meta property="og:image" content="https://ninidesign.cl/assets/hd/a00.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="nini — Portafolio · Constanza Hernández">
-<meta name="twitter:image" content="https://constanzahercan-commits.github.io/nini-portafolio/assets/hd/a00.jpg">
+<meta name="twitter:image" content="https://ninidesign.cl/assets/hd/a00.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -370,13 +371,12 @@ class Component extends DCLogic {
     const projects = this.base().map((b, i) => ({
       ...b,
       number: String(i + 1).padStart(2, '0'),
-      title: t.projects ? t.projects[i].title : '',
-      desc: '', role: '', tags: []
+      title: '', desc: '', role: '', tags: []
     }));
     // merge localized project copy
     const lp = this.projCopy()[lang];
     const gals = this.galleries();
-    projects.forEach((p, i) => { p.title = lp[i].title; p.desc = lp[i].desc; p.role = lp[i].role; p.tags = lp[i].tags; p.dir = i % 2 === 0 ? 'row' : 'row-reverse'; p.open = () => this.openModal(i); });
+    projects.forEach((p, i) => { p.title = lp[i].title; p.desc = lp[i].desc; p.role = lp[i].role; p.tags = lp[i].tags; p.open = () => this.openModal(i); });
 
     const oi = this.state.openIndex;
     return {
