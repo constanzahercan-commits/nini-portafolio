@@ -46,6 +46,10 @@ document.addEventListener('DOMContentLoaded', async function() {
 
   // Error sink persists across replaceWith since it's on window, not the DOM.
   window.addEventListener('error', function(e) {
+    // Ignore <img> load failures — the sc-for template briefly paints its
+    // raw "{{ p.img }}" placeholder before hydration replaces it, which
+    // fires a harmless 404 that isn't a real bundle/script error.
+    if (e.target && e.target.tagName === 'IMG') return;
     var p = document.body || document.documentElement;
     var d = document.getElementById('__bundler_err') || p.appendChild(document.createElement('div'));
     d.id = '__bundler_err';
