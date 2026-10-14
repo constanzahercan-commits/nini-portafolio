@@ -52,7 +52,8 @@ for uuid, m in meta.items():
 def script(kind, payload):
     return '<script type="__bundler/%s">\n%s\n</script>' % (kind, payload)
 
-safe_template = json.dumps(t, ensure_ascii=False).replace('</script', '<\\/script')
+# '<' como \u003C: el parser HTML no puede ver ni </script ni <!-- dentro del bloque
+safe_template = json.dumps(t, ensure_ascii=False).replace('<', '\\u003C')
 out = (open('build/shell_head.html', encoding='utf-8').read()
        + script('manifest', json.dumps(manifest))
        + '\n  '
