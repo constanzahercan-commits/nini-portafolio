@@ -116,7 +116,15 @@
   .nn-wordmark{ font-weight:800; font-size:1em; line-height:.82; letter-spacing:-.05em; margin:0; color:#141414; position:relative; z-index:2; }
 
   .nn-stage{ font-size:clamp(120px,31vw,470px); margin-bottom:.2em; }
-  .nn-fd{ position:absolute; left:50%; top:-.06em; width:104%; height:1.1em; transform:translateX(-50%); pointer-events:none; z-index:1; background:url(assets/folder.png) center/100% 100% no-repeat; filter:drop-shadow(0 .06em .08em rgba(40,90,140,.25)); }
+  .nn-fd{ position:absolute; left:50%; top:.03em; width:105%; height:.84em; transform:translateX(-50%); pointer-events:none; z-index:1; border:2px dashed #141414; background:radial-gradient(closest-side, rgba(120,170,255,.16), rgba(120,170,255,.05) 60%, transparent 100%); }
+  .nn-hd{ position:absolute; inset:0; z-index:4; pointer-events:none; --h:clamp(9px,.032em,16px); }
+  .nn-hd i{ position:absolute; width:var(--h); height:var(--h); border-radius:50%; background:#2F6FDB; border:2px solid #fff; box-shadow:0 1px 4px rgba(20,20,20,.3); transform:translate(-50%,-50%); box-sizing:content-box; }
+  .nn-hd .nn-g,.nn-hd .nn-y{ width:var(--h); height:var(--h); }
+  .nn-hd .nn-g{ background:#5CD65C; left:50%; top:calc(-1 * clamp(14px,.06em,30px)); }
+  .nn-hd .nn-y{ background:#F0B93B; border-radius:3px; left:50%; top:calc(100% + clamp(14px,.06em,30px)); }
+  .nn-hd b{ position:absolute; left:50%; width:2px; transform:translateX(-50%); }
+  .nn-hd .nn-gs{ background:#5CD65C; bottom:100%; height:clamp(14px,.06em,30px); }
+  .nn-hd .nn-ys{ background:#F0B93B; top:100%; height:clamp(14px,.06em,30px); }
   .nn-hero-copy{ position:relative; z-index:4; margin-top:clamp(22px,3vw,40px); }
   .nn-fold{ position:relative; width:100%; aspect-ratio:1.18/1; background:url(assets/folder.png) center/100% 100% no-repeat; filter:drop-shadow(0 14px 14px rgba(40,90,140,.25)); }
   .nn-fold i,.nn-fold b{ display:none; }
@@ -130,7 +138,7 @@
   .nn-appicon img{ display:block; width:100%; height:100%; object-fit:cover; }
   .nn-app-vscode{ background:#fff; }
   .nn-app-vscode img{ padding:15%; object-fit:contain; }
-  .nn-i1{ left:15%; top:-5%; } .nn-i2{ left:71%; top:-5%; } .nn-i3{ left:3%; top:12%; }
+  .nn-i1{ left:8%; top:-5%; } .nn-i2{ left:81%; top:-5%; } .nn-i3{ left:3%; top:12%; }
   .nn-i4{ right:6%; top:50%; } .nn-i5{ left:4%; top:44%; } .nn-i6{ left:20%; bottom:1%; }
   .nn-i7{ left:73%; bottom:2%; } .nn-i8{ right:3%; top:12%; } .nn-i9{ left:87%; bottom:10%; }
   .nn-i10{ left:14%; top:52%; } .nn-i11{ left:3%; bottom:2%; }
@@ -234,7 +242,7 @@
       <div class="nn-center">
         <div class="nn-status nn-glass nn-mono"><span class="nn-dot-live"></span>{{ t.hero.status }}</div>
         <div class="nn-stage">
-          <div class="nn-fd" aria-hidden="true"></div>
+          <div class="nn-fd" aria-hidden="true"><span class="nn-hd"><b class="nn-gs"></b><i class="nn-g"></i><b class="nn-ys"></b><i class="nn-y"></i><i style="left:0%;top:0%"></i><i style="left:50%;top:0%"></i><i style="left:100%;top:0%"></i><i style="left:0%;top:50%"></i><i style="left:100%;top:50%"></i><i style="left:0%;top:100%"></i><i style="left:50%;top:100%"></i><i style="left:100%;top:100%"></i></span></div>
           <h1 class="nn-wordmark nn-disp">nini<span style="color:var(--brand,#FF2E88);">.</span></h1>
         </div>
         <div class="nn-hero-copy">
