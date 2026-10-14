@@ -54,7 +54,7 @@
 <meta name="twitter:image" content="https://ninidesign.cl/assets/hd/a00.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root{ --ink:#141414; --violet:#7A3CFF; --lime:#D9FF3F; --line:rgba(20,20,20,.12); }
   *{ box-sizing:border-box; }
@@ -71,11 +71,10 @@
   @keyframes nn-wiggle{ 0%,100%{ rotate:0deg; } 25%{ rotate:-5deg; } 75%{ rotate:5deg; } }
 
   .nn-mono{ font-family:'Space Mono',monospace; }
-  .nn-hand{ font-family:'Caveat',cursive; font-weight:700; }
   .nn-disp{ font-family:'Bricolage Grotesque',sans-serif; }
   .nn-dots{ background-image:radial-gradient(rgba(20,20,20,.17) 1.2px, transparent 1.4px); background-size:26px 26px; }
   .nn-dots-dark{ background-image:radial-gradient(rgba(255,255,255,.13) 1.2px, transparent 1.4px); background-size:26px 26px; }
-  .nn-glass{ background:rgba(255,255,255,.6); -webkit-backdrop-filter:blur(16px) saturate(1.5); backdrop-filter:blur(16px) saturate(1.5); border:1px solid rgba(20,20,20,.1); }
+  .nn-glass{ background:#fff; border:1px solid var(--line); }
 
   /* stickers arrastrables */
   .nn-stk{ position:absolute; z-index:6; cursor:grab; user-select:none; -webkit-user-select:none; touch-action:none;
@@ -100,9 +99,11 @@
   .nn-lang:hover{ background:var(--brand,#FF2E88); }
 
   /* hero */
-  .nn-hero{ position:relative; min-height:100vh; display:flex; align-items:center; padding:120px clamp(20px,5vw,64px) 70px; overflow:hidden; --mx:72%; --my:28%; }
+  .nn-hero{ position:relative; min-height:100vh; display:flex; align-items:center; padding:120px clamp(20px,5vw,64px) 70px; overflow:hidden; }
+  .nn-hero-photo img{ display:block; width:100%; max-width:480px; margin-left:auto; aspect-ratio:4/5; object-fit:cover; object-position:50% 25%; border-radius:24px; }
+  .nn-about-grid{ }
   .nn-spot{ position:absolute; inset:0; pointer-events:none; background:radial-gradient(520px circle at var(--mx) var(--my), rgba(255,46,136,.16), rgba(122,60,255,.07) 45%, transparent 70%); }
-  .nn-hero-grid{ position:relative; z-index:2; width:100%; max-width:1500px; margin:0 auto; display:grid; grid-template-columns:minmax(0,1.4fr) minmax(0,.8fr); gap:clamp(28px,4vw,70px); align-items:center; }
+  .nn-hero-grid{ position:relative; z-index:2; width:100%; max-width:1500px; margin:0 auto; display:grid; grid-template-columns:minmax(0,1.3fr) minmax(0,.8fr); gap:clamp(28px,4vw,70px); align-items:center; }
   .nn-status{ display:inline-flex; align-items:center; gap:10px; padding:9px 16px; border-radius:100px; font-size:12.5px; letter-spacing:.04em; }
   .nn-dot-live{ width:9px; height:9px; border-radius:50%; background:#34D26A; animation:nn-pulse 2s infinite; flex:none; }
   .nn-inspector{ position:relative; border-radius:26px; padding:22px; box-shadow:0 40px 80px -40px rgba(20,20,20,.45), 0 2px 0 rgba(255,255,255,.7) inset; transform:rotate(1.6deg); }
@@ -136,13 +137,14 @@
 
   /* sobre mí */
   .nn-bento{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
-  .nn-mini{ border-radius:20px; padding:18px 18px 20px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.16); transition:background .25s, transform .25s, border-color .25s; }
-  .nn-mini:hover{ background:rgba(255,46,136,.16); border-color:var(--brand,#FF2E88); transform:translateY(-3px); }
-  .nn-word{ font-family:'Bricolage Grotesque',sans-serif; font-weight:600; font-size:clamp(16px,1.8vw,20px); padding:8px 16px; border-radius:100px; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.18); }
+  .nn-mini{ border-radius:20px; padding:18px 18px 20px; background:var(--paper,#F4EFE6); border:1px solid var(--line); transition:transform .25s, border-color .25s; }
+  .nn-mini:hover{ border-color:var(--brand,#FF2E88); transform:translateY(-3px); }
+  .nn-word{ font-family:'Bricolage Grotesque',sans-serif; font-weight:600; font-size:clamp(16px,1.8vw,20px); padding:8px 16px; border-radius:100px; background:transparent; border:1.5px solid #141414; }
   .nn-polaroid{ position:relative; background:#fff; padding:14px 14px 58px; border-radius:6px; box-shadow:0 36px 60px -30px rgba(0,0,0,.7); transform:rotate(-3deg); }
 
   @media(max-width:900px){
-    .nn-hero-grid{ grid-template-columns:minmax(0,1fr); }
+    .nn-hero-grid, .nn-about-grid{ grid-template-columns:minmax(0,1fr) !important; }
+    .nn-hero-photo img{ margin:0; max-width:380px; }
     .nn-inspector{ transform:none; max-width:460px; }
     .nn-cell{ grid-column:1 / -1 !important; }
     .nn-card.nn-feat, .nn-card.nn-feat.nn-rev{ flex-direction:column; }
@@ -182,7 +184,7 @@
     </div>
   </nav>
   <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
-    <div class="nn-mob-menu nn-dots" style="position:fixed; inset:0; z-index:49; background-color:var(--paper,#F4EFE6); display:flex; flex-direction:column; justify-content:center; align-items:center; gap:clamp(24px,6vw,44px); padding:100px 40px 60px; animation:nn-menu-in .25s ease;">
+    <div class="nn-mob-menu" style="position:fixed; inset:0; z-index:49; background-color:var(--paper,#F4EFE6); display:flex; flex-direction:column; justify-content:center; align-items:center; gap:clamp(24px,6vw,44px); padding:100px 40px 60px; animation:nn-menu-in .25s ease;">
       <a class="nn-disp" href="#work" onClick="{{ closeMenu }}" style="font-size:clamp(40px,11vw,64px); font-weight:800; color:#141414; text-decoration:none; letter-spacing:-.03em;">{{ t.nav.projects }}</a>
       <a class="nn-disp" href="#about" onClick="{{ closeMenu }}" style="font-size:clamp(40px,11vw,64px); font-weight:800; color:#141414; text-decoration:none; letter-spacing:-.03em;">{{ t.nav.about }}</a>
       <a class="nn-disp" href="#contact" onClick="{{ closeMenu }}" style="font-size:clamp(40px,11vw,64px); font-weight:800; color:#141414; text-decoration:none; letter-spacing:-.03em;">{{ t.nav.contact }}</a>
@@ -190,77 +192,30 @@
   </sc-if>
 
   <!-- HERO -->
-  <header id="top" class="nn-hero nn-dots" data-screen-label="Hero">
-    <div class="nn-spot"></div>
-    <div style="position:absolute; top:6%; right:-6%; width:clamp(260px,38vw,560px); height:clamp(260px,38vw,560px); background:linear-gradient(135deg, var(--brand,#FF2E88), var(--violet,#7A3CFF)); opacity:.2; filter:blur(40px); animation:nn-blob 16s ease-in-out infinite; z-index:0;"></div>
-    <div style="position:absolute; bottom:-8%; left:-4%; width:clamp(180px,24vw,340px); height:clamp(180px,24vw,340px); background:var(--lime,#D9FF3F); opacity:.35; filter:blur(50px); animation:nn-blob 20s ease-in-out infinite reverse; z-index:0;"></div>
-
+  <header id="top" class="nn-hero" data-screen-label="Hero">
     <div class="nn-hero-grid">
       <div>
         <div class="nn-status nn-glass nn-mono"><span class="nn-dot-live"></span>{{ t.hero.status }}</div>
-
-        <div style="position:relative; display:inline-block; margin-top:26px;">
-          <h1 class="nn-disp" style="font-weight:800; font-size:clamp(110px,19vw,310px); line-height:.82; letter-spacing:-.04em; margin:0; color:#141414;">nini<span style="color:var(--brand,#FF2E88);">.</span></h1>
-          <img src="assets/stickers/underline.svg" alt="" style="position:absolute; left:2%; bottom:-6%; width:78%; height:auto; pointer-events:none;">
-          <div class="nn-hide-sm" style="position:absolute; right:-20%; top:-2%; z-index:5; display:flex; align-items:flex-start; animation:nn-bob 6s ease-in-out infinite; pointer-events:none;">
-            <img src="assets/stickers/sticker-cursor.svg" alt="" style="width:46px; height:auto; margin-top:-6px;">
-            <span class="nn-mono" style="margin:26px 0 0 -8px; background:var(--brand,#FF2E88); color:#fff; font-size:13px; font-weight:700; padding:7px 13px; border-radius:6px 16px 16px 16px; box-shadow:0 10px 20px -8px rgba(255,46,136,.7);">Constanza</span>
-          </div>
-        </div>
-
+        <h1 class="nn-disp" style="font-weight:800; font-size:clamp(100px,16vw,250px); line-height:.82; letter-spacing:-.045em; margin:28px 0 0; color:#141414;">nini<span style="color:var(--brand,#FF2E88);">.</span></h1>
         <div class="nn-mono" style="margin-top:34px; font-size:clamp(12px,1.3vw,14px); letter-spacing:.2em; text-transform:uppercase; opacity:.65;">{{ t.hero.role }} · {{ t.hero.tagline }}</div>
-        <p style="font-size:clamp(17px,2vw,23px); line-height:1.5; max-width:620px; margin:16px 0 0; color:#1c1c1c;">{{ t.hero.intro }}</p>
+        <p style="font-size:clamp(17px,2vw,23px); line-height:1.5; max-width:600px; margin:16px 0 0; color:#1c1c1c;">{{ t.hero.intro }}</p>
         <div style="display:flex; flex-wrap:wrap; gap:12px; align-items:center; margin-top:32px;">
           <a class="nn-pill nn-pill-dark" href="#work">{{ t.hero.cta }} <span style="font-size:17px;">↓</span></a>
           <a class="nn-pill nn-pill-line" href="#contact">{{ t.hero.cta2 }}</a>
         </div>
       </div>
-
-      <div style="position:relative;">
-        <div class="nn-inspector nn-glass">
-          <div style="display:flex; align-items:center; gap:14px; padding-bottom:16px;">
-            <img src="assets/foto-flores.jpeg" alt="Constanza Hernández" style="width:58px; height:58px; border-radius:50%; object-fit:cover; object-position:50% 20%; border:2px solid #fff; box-shadow:0 6px 14px -6px rgba(20,20,20,.5);">
-            <div style="min-width:0;">
-              <div class="nn-disp" style="font-weight:800; font-size:22px; letter-spacing:-.03em; line-height:1.05;">Constanza Hernández</div>
-              <div class="nn-mono" style="font-size:12px; opacity:.6; margin-top:4px;">{{ t.hero.cardRole }}</div>
-            </div>
-          </div>
-          <sc-for list="{{ t.hero.rows }}" as="r" hint-placeholder-count="3">
-            <div class="nn-row"><span class="nn-mono" style="opacity:.55; font-size:12.5px;">{{ r.k }}</span><span style="font-weight:600; text-align:right;">{{ r.v }}</span></div>
-          </sc-for>
-          <div class="nn-row" style="flex-direction:column; gap:10px;">
-            <span class="nn-mono" style="opacity:.55; font-size:12.5px;">{{ t.hero.variants }}</span>
-            <div style="display:flex; flex-wrap:wrap; gap:8px;">
-              <span class="nn-chip on">{{ t.about.skills.0 }}</span>
-              <span class="nn-chip">{{ t.about.skills.1 }}</span>
-              <span class="nn-chip">{{ t.about.skills.2 }}</span>
-              <span class="nn-chip">{{ t.about.skills.3 }}</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="nn-stk" data-drag style="--r:-10deg; top:-70px; left:-70px; width:104px;">
-          <img src="assets/stickers/sticker-burst.svg" alt="">
-          <span class="nn-stk-txt nn-hand" style="color:#fff; font-size:34px;">{{ t.hero.hi }}</span>
-        </div>
-        <div class="nn-stk" data-drag style="--r:14deg; top:-58px; right:-6px; width:84px;"><img src="assets/stickers/sticker-smile.svg" alt=""></div>
-        <div class="nn-stk nn-hide-sm" data-drag style="--r:-8deg; bottom:-44px; left:-44px; width:86px;"><img src="assets/stickers/sticker-heart.svg" alt=""></div>
-        <div class="nn-stk nn-hide-sm" data-drag style="--r:10deg; bottom:-30px; right:-18px; width:70px;"><img src="assets/stickers/sticker-bolt.svg" alt=""></div>
-        <div class="nn-hide-sm" style="position:absolute; z-index:5; left:-150px; top:92px; display:flex; flex-direction:column; align-items:flex-start; pointer-events:none;">
-          <img src="assets/stickers/arrow.svg" alt="" style="width:70px; height:auto; margin-left:62px; margin-bottom:-4px;">
-          <span class="nn-hand" style="font-size:30px; line-height:1; transform:rotate(-8deg);">{{ t.hero.me }}</span>
-        </div>
+      <div class="nn-hero-photo">
+        <img src="assets/foto-flores.jpeg" alt="Constanza Hernández">
+      </div>
     </div>
-    <img class="nn-hide-sm" src="assets/stickers/sparkle.svg" alt="" style="position:absolute; z-index:1; left:46%; top:16%; width:44px; animation:nn-spin 14s linear infinite; pointer-events:none;">
-    <img src="assets/stickers/asterisk.svg" alt="" style="position:absolute; z-index:1; left:3%; bottom:9%; width:54px; animation:nn-float 9s ease-in-out infinite; pointer-events:none;">
   </header>
 
-  <!-- MARQUEE -->
-  <div style="background:#141414; color:var(--paper,#F4EFE6); padding:20px 0; overflow:hidden; white-space:nowrap; border-top:1px solid #141414; border-bottom:1px solid #141414; transform:rotate(-1.2deg); margin:-14px -20px 0; position:relative; z-index:3;">
-    <div style="display:inline-flex; align-items:center; animation:nn-marq 28s linear infinite;">
+  <!-- FRANJA -->
+  <div style="border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:18px 0; overflow:hidden; white-space:nowrap;">
+    <div style="display:inline-flex; align-items:center; animation:nn-marq 34s linear infinite;">
       <sc-for list="{{ marqueeLoop }}" as="w" hint-placeholder-count="12">
-        <span class="nn-disp" style="font-weight:700; font-size:clamp(26px,4vw,52px); letter-spacing:-.02em; padding:0 24px;">{{ w }}</span>
-        <img src="assets/stickers/sparkle.svg" alt="" style="width:clamp(22px,3vw,36px); height:auto; margin-right:24px;">
+        <span class="nn-disp" style="font-weight:600; font-size:clamp(20px,2.6vw,32px); letter-spacing:-.02em; padding:0 28px;">{{ w }}</span>
+        <span style="width:7px; height:7px; border-radius:50%; background:var(--brand,#FF2E88); display:inline-block;"></span>
       </sc-for>
     </div>
   </div>
@@ -268,9 +223,8 @@
   <!-- WORK -->
   <section id="work" data-screen-label="Proyectos" style="padding:clamp(80px,10vw,150px) clamp(20px,5vw,64px) clamp(60px,8vw,120px); max-width:1500px; margin:0 auto;">
     <div data-reveal style="opacity:0; transform:translateY(40px); transition:opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:18px; margin-bottom:clamp(36px,5vw,70px);">
-      <div style="position:relative; display:inline-block;">
-        <h2 class="nn-disp" style="font-weight:800; font-size:clamp(48px,8.5vw,120px); line-height:.9; letter-spacing:-.045em; margin:0; position:relative; z-index:1;">{{ t.work.title }}</h2>
-        <img src="assets/stickers/circle-mag.svg" alt="" style="position:absolute; left:-6%; top:-22%; width:112%; height:auto; pointer-events:none; z-index:2;">
+      <div>
+        <h2 class="nn-disp" style="font-weight:800; font-size:clamp(48px,8.5vw,120px); line-height:.9; letter-spacing:-.045em; margin:0;">{{ t.work.title }}</h2>
       </div>
       <div style="display:flex; align-items:center; gap:14px;">
         <span class="nn-mono" style="font-size:13px; letter-spacing:.16em; text-transform:uppercase; opacity:.6;">{{ t.work.kicker }}</span>
@@ -285,11 +239,7 @@
             <div class="nn-media">
               <img class="nn-img" src="{{ p.img }}" alt="{{ p.title }}" loading="lazy">
               <span class="nn-badge nn-mono">{{ p.number }}</span>
-              <img class="nn-tape" src="{{ p.tape }}" alt="" style="display:{{ p.tapeShow }};">
-              <div class="nn-pst" style="display:{{ p.stkShow }};">
-                <img src="{{ p.stk }}" alt="" style="display:block; width:100%; height:auto;">
-                <span class="nn-stk-txt nn-hand" style="color:#fff; font-size:21px; display:{{ p.stkTxtShow }};">{{ t.work.new }}</span>
-              </div>
+
             </div>
             <div class="nn-body">
               <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:14px;">
@@ -311,26 +261,15 @@
   </section>
 
   <!-- ABOUT -->
-  <section id="about" class="nn-dots-dark" data-screen-label="Sobre mí" style="background-color:#141414; color:var(--paper,#F4EFE6); padding:clamp(80px,10vw,150px) clamp(20px,5vw,64px); position:relative; overflow:hidden;">
-    <div style="position:absolute; top:-10%; right:-8%; width:clamp(240px,36vw,520px); height:clamp(240px,36vw,520px); background:var(--violet,#7A3CFF); opacity:.28; filter:blur(70px); animation:nn-blob 18s ease-in-out infinite; pointer-events:none;"></div>
-    <div style="position:relative; z-index:2; max-width:1500px; margin:0 auto; display:flex; flex-wrap:wrap; gap:clamp(48px,7vw,100px); align-items:flex-start;">
-      <div data-reveal style="opacity:0; transform:translateY(40px); transition:opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); flex:1 1 320px; max-width:430px; position:relative; padding:10px 14px 30px;">
-        <div class="nn-polaroid">
-          <img class="nn-tape" src="assets/stickers/tape-pink.svg" alt="" style="left:50%; right:auto; top:-14px; margin-left:-55px; transform:rotate(-4deg);">
-          <img src="assets/foto-flores.jpeg" alt="Constanza Hernández" style="display:block; width:100%; aspect-ratio:4/5; object-fit:cover; border-radius:3px;">
-          <div class="nn-hand" style="position:absolute; left:0; right:0; bottom:14px; text-align:center; color:#141414; font-size:30px; line-height:1;">{{ t.about.note }}</div>
-        </div>
-        <div class="nn-stk" data-drag style="--r:12deg; top:-18px; right:-4px; width:82px;"><img src="assets/stickers/sticker-heart.svg" alt=""></div>
-        <div class="nn-stk" data-drag style="--r:-10deg; bottom:6px; right:-6px; width:78px;"><img src="assets/stickers/sticker-smile.svg" alt=""></div>
-        <div style="position:absolute; z-index:5; bottom:0; left:-6px; background:var(--brand,#FF2E88); color:#141414; font-family:'Space Mono',monospace; font-weight:700; font-size:13px; padding:10px 16px; border-radius:100px; transform:rotate(-5deg);">@nini</div>
-      </div>
-
-      <div data-reveal style="opacity:0; transform:translateY(40px); transition:opacity .7s .1s cubic-bezier(.2,.7,.2,1), transform .7s .1s cubic-bezier(.2,.7,.2,1); flex:2 1 460px; min-width:0;">
+  <section id="about" data-screen-label="Sobre mí" style="background:#fff; border-top:1px solid var(--line); padding:clamp(80px,10vw,150px) clamp(20px,5vw,64px);">
+    <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); max-width:1500px; margin:0 auto; display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.1fr); gap:clamp(40px,7vw,110px); align-items:start;" class="nn-about-grid">
+      <div>
         <div class="nn-mono" style="font-size:13px; letter-spacing:.2em; text-transform:uppercase; color:var(--brand,#FF2E88); margin-bottom:18px;">{{ t.about.kicker }}</div>
-        <h2 class="nn-disp" style="font-weight:700; font-size:clamp(36px,5.2vw,70px); line-height:1; letter-spacing:-.035em; margin:0 0 26px;">{{ t.about.title }}</h2>
-        <p style="font-size:clamp(16px,1.8vw,20px); line-height:1.6; max-width:640px; margin:0 0 16px; opacity:.9;">{{ t.about.body }}</p>
-        <p style="font-size:clamp(16px,1.8vw,20px); line-height:1.6; max-width:640px; margin:0 0 38px; opacity:.9;">{{ t.about.body2 }}</p>
-
+        <h2 class="nn-disp" style="font-weight:700; font-size:clamp(36px,5vw,68px); line-height:1; letter-spacing:-.035em; margin:0 0 26px;">{{ t.about.title }}</h2>
+        <p style="font-size:clamp(16px,1.8vw,20px); line-height:1.6; max-width:560px; margin:0 0 16px;">{{ t.about.body }}</p>
+        <p style="font-size:clamp(16px,1.8vw,20px); line-height:1.6; max-width:560px; margin:0;">{{ t.about.body2 }}</p>
+      </div>
+      <div>
         <div class="nn-mono" style="font-size:12px; letter-spacing:.14em; text-transform:uppercase; opacity:.55; margin-bottom:14px;">{{ t.about.skillsTitle }}</div>
         <div class="nn-bento" style="margin-bottom:36px;">
           <sc-for list="{{ skillCards }}" as="s" hint-placeholder-count="4">
@@ -340,7 +279,6 @@
             </div>
           </sc-for>
         </div>
-
         <div class="nn-mono" style="font-size:12px; letter-spacing:.14em; text-transform:uppercase; opacity:.55; margin-bottom:14px;">{{ t.about.wordsTitle }}</div>
         <div style="display:flex; flex-wrap:wrap; gap:10px;">
           <sc-for list="{{ t.about.words }}" as="word" hint-placeholder-count="5">
@@ -352,14 +290,10 @@
   </section>
 
   <!-- CONTACT -->
-  <section id="contact" class="nn-dots" data-screen-label="Contacto" style="padding:clamp(90px,12vw,190px) clamp(20px,5vw,64px); text-align:center; position:relative; overflow:hidden;">
-    <div style="position:absolute; top:6%; left:50%; transform:translateX(-50%); width:clamp(260px,44vw,620px); height:clamp(260px,44vw,620px); background:linear-gradient(135deg, var(--brand,#FF2E88), var(--violet,#7A3CFF)); opacity:.18; filter:blur(50px); animation:nn-blob 16s ease-in-out infinite; z-index:0;"></div>
-    <div data-reveal style="position:relative; z-index:2; opacity:0; transform:translateY(40px); transition:opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); max-width:1000px; margin:0 auto;">
+  <section id="contact" data-screen-label="Contacto" style="padding:clamp(90px,12vw,170px) clamp(20px,5vw,64px); text-align:center; border-top:1px solid var(--line);">
+    <div data-reveal style="opacity:0; transform:translateY(24px); transition:opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); max-width:1000px; margin:0 auto;">
       <div class="nn-mono" style="font-size:13px; letter-spacing:.2em; text-transform:uppercase; color:var(--brand,#FF2E88); margin-bottom:22px;">{{ t.contact.kicker }}</div>
-      <div style="position:relative; display:inline-block;">
-        <h2 class="nn-disp" style="font-weight:800; font-size:clamp(46px,10vw,150px); line-height:.9; letter-spacing:-.045em; margin:0 0 30px;">{{ t.contact.title }}</h2>
-        <img class="nn-hide-sm" src="assets/stickers/sparkle-lime.svg" alt="" style="position:absolute; right:-7%; top:-14%; width:clamp(44px,6vw,84px); animation:nn-spin 16s linear infinite; pointer-events:none;">
-      </div>
+      <h2 class="nn-disp" style="font-weight:800; font-size:clamp(46px,9vw,130px); line-height:.92; letter-spacing:-.045em; margin:0 0 30px;">{{ t.contact.title }}</h2>
       <p style="font-size:clamp(17px,2vw,22px); line-height:1.55; max-width:560px; margin:0 auto 42px; color:#2a2a2a;">{{ t.contact.body }}</p>
       <div style="display:flex; flex-wrap:wrap; gap:12px; justify-content:center; align-items:center;">
         <a class="nn-pill nn-pill-dark" href="https://www.linkedin.com/in/constanza-hern%C3%A1ndez-453026366" target="_blank" rel="noopener" style="padding:16px 30px;">{{ t.contact.linkedin }} <span>↗</span></a>
@@ -367,12 +301,6 @@
         <a class="nn-pill nn-pill-line" href="assets/cv.pdf" download="CV_Constanza_Hernandez.pdf" style="padding:16px 30px;">{{ t.contact.cv }} <span>↓</span></a>
       </div>
       <div class="nn-mono" style="font-size:12px; letter-spacing:.06em; opacity:.5; margin-top:26px;">{{ t.contact.note }}</div>
-    </div>
-    <div class="nn-stk" data-drag style="--r:-12deg; left:8%; top:22%; width:clamp(70px,9vw,110px);"><img src="assets/stickers/sticker-bolt.svg" alt=""></div>
-    <div class="nn-stk" data-drag style="--r:10deg; right:9%; bottom:18%; width:clamp(70px,9vw,110px);"><img src="assets/stickers/sticker-smile.svg" alt=""></div>
-    <div class="nn-hide-sm" style="position:absolute; z-index:3; left:12%; bottom:24%; display:flex; align-items:flex-start; gap:6px; pointer-events:none;">
-      <span class="nn-hand" style="font-size:32px; line-height:1; transform:rotate(-6deg); margin-top:34px;">{{ t.contact.psst }}</span>
-      <img src="assets/stickers/arrow.svg" alt="" style="width:82px; height:auto; transform:rotate(58deg);">
     </div>
   </section>
 

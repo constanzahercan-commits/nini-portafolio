@@ -12,7 +12,7 @@ No edites `index.html` a mano, se sobrescribe en cada build.
 
 ## Carpetas
 
-- `assets/` imágenes de proyectos (JPG optimizados), `assets/stickers/` stickers SVG dibujados a mano.
+- `assets/` imágenes de proyectos (JPG optimizados).
 - `build/` build.py, fuentes embebidas, shell del bundle.
 
 ## Agregar un proyecto
