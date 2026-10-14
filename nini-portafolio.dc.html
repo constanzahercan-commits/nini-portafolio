@@ -112,27 +112,31 @@
   .nn-desk-top{ position:absolute; left:0; right:0; top:-34px; display:flex; justify-content:space-between; font-weight:600; font-size:15px; z-index:3; }
   .nn-stage{ position:relative; margin-top:18px; }
   .nn-wordmark{ font-weight:800; font-size:clamp(120px,31vw,470px); line-height:.82; letter-spacing:-.05em; margin:0; color:#141414; position:relative; z-index:2; }
-  .nn-bigfolder{ position:absolute; left:50%; top:40%; width:64%; transform:translateX(-50%); z-index:1; }
+.nn-bigfolder{ position:absolute; left:50%; top:34%; width:100%; transform:translateX(-50%); z-index:1; pointer-events:none; }
+  .nn-bigfront{ z-index:3; }
   .nn-cursor{ position:absolute; right:-2%; bottom:6%; z-index:4; filter:drop-shadow(0 6px 8px rgba(20,20,20,.25)); }
-  .nn-year{ font-weight:300; font-size:clamp(22px,2.6vw,36px); margin-top:6px; letter-spacing:-.01em; opacity:.85; }
+    .nn-year{ font-weight:300; font-size:clamp(22px,2.6vw,36px); margin-top:clamp(18px,4vw,64px); letter-spacing:-.01em; opacity:.85; }
   .nn-hero-copy{ position:relative; z-index:4; margin-top:clamp(22px,3vw,40px); }
   .nn-fold{ position:relative; width:100%; aspect-ratio:1.32/1; }
   .nn-fold i{ position:absolute; left:0; top:0; width:42%; height:18%; border-radius:12% 12% 0 0 / 40% 40% 0 0; background:linear-gradient(#8DC3EA,#6BAAD8); }
   .nn-fold b{ position:absolute; left:0; right:0; top:9%; bottom:0; border-radius:8%; background:linear-gradient(#7DB8E3,#5B9BCB); box-shadow:0 18px 30px -18px rgba(40,90,140,.6), inset 0 2px 0 rgba(255,255,255,.35); }
-  .nn-fold-xl{ aspect-ratio:1.9/1; }
-  .nn-fold-xl b::after{ content:""; position:absolute; left:0; right:0; bottom:0; height:62%; border-radius:0 0 8% 8%; background:rgba(120,180,225,.55); }
+  .nn-fold-xl{ aspect-ratio:2.6/1; }
+  .nn-fold u{ position:absolute; left:0; right:0; bottom:0; height:58%; border-radius:5% 5% 7% 7%; background:rgba(200,228,250,.38); border-top:2px solid rgba(255,255,255,.7); box-shadow:0 24px 36px -22px rgba(40,90,140,.55); text-decoration:none; }
   .nn-desk{ position:absolute; inset:0; pointer-events:none; z-index:2; }
   .nn-item{ position:absolute; display:flex; flex-direction:column; align-items:center; gap:8px; }
   .nn-fname{ font-size:clamp(11px,1vw,14px); font-weight:500; text-align:center; background:rgba(255,255,255,.7); padding:2px 8px; border-radius:6px; white-space:nowrap; }
   .nn-fold-wrap{ width:clamp(70px,9vw,128px); }
   .nn-thumb{ display:block; width:clamp(78px,8.5vw,124px); aspect-ratio:3/4; object-fit:cover; object-position:top; box-shadow:0 16px 30px -14px rgba(20,20,20,.5); border:3px solid #fff; border-radius:6px; background:#141414; }
   .nn-appicon{ width:clamp(52px,5.6vw,80px); aspect-ratio:1; border-radius:22%; display:flex; align-items:center; justify-content:center; font-family:'Bricolage Grotesque',sans-serif; font-weight:800; box-shadow:0 14px 24px -12px rgba(20,20,20,.55), inset 0 1px 0 rgba(255,255,255,.4); }
-  .nn-app-nini{ background:#141414; color:#fff; font-size:clamp(16px,1.9vw,26px); letter-spacing:-.04em; gap:3px; }
-  .nn-app-nini i{ width:.28em; height:.28em; border-radius:50%; background:var(--brand,#FF2E88); display:inline-block; margin-top:.5em; }
-  .nn-app-ux{ background:linear-gradient(135deg,#FF2E88,#7A3CFF); color:#fff; font-size:clamp(18px,2vw,28px); letter-spacing:-.02em; }
-  .nn-i1{ left:17%; top:-4%; } .nn-i2{ left:71%; top:-6%; } .nn-i3{ left:3%; top:12%; }
-  .nn-i4{ right:3%; top:52%; } .nn-i5{ left:4%; top:52%; } .nn-i6{ left:19%; bottom:2%; }
-  .nn-i7{ left:73%; bottom:4%; } .nn-i8{ right:3%; top:13%; } .nn-i9{ left:88%; bottom:24%; }
+  .nn-appicon svg{ display:block; padding:16%; }
+  .nn-app-claude{ background:#D97757; }
+  .nn-app-vs{ background:#fff; }
+  .nn-app-fig{ background:#fff; }
+  .nn-app-cap{ background:#0c0c0c; }
+  .nn-i1{ left:15%; top:-5%; } .nn-i2{ left:71%; top:-5%; } .nn-i3{ left:3%; top:12%; }
+  .nn-i4{ right:6%; top:50%; } .nn-i5{ left:4%; top:44%; } .nn-i6{ left:20%; bottom:1%; }
+  .nn-i7{ left:73%; bottom:2%; } .nn-i8{ right:3%; top:12%; } .nn-i9{ left:87%; bottom:10%; }
+  .nn-i10{ left:16%; top:50%; } .nn-i11{ left:3%; bottom:2%; }
   .nn-spot{ position:absolute; inset:0; pointer-events:none; background:radial-gradient(520px circle at var(--mx) var(--my), rgba(255,46,136,.16), rgba(122,60,255,.07) 45%, transparent 70%); }
   .nn-status{ display:inline-flex; align-items:center; gap:10px; padding:9px 16px; border-radius:100px; font-size:12.5px; letter-spacing:.04em; }
   .nn-dot-live{ width:9px; height:9px; border-radius:50%; background:#34D26A; animation:nn-pulse 2s infinite; flex:none; }
@@ -177,7 +181,8 @@
     .nn-hero{ min-height:0; }
     .nn-desk{ position:static; display:flex; flex-wrap:wrap; justify-content:center; align-items:flex-end; gap:22px; margin-top:44px; }
     .nn-item{ position:static !important; }
-    .nn-i1,.nn-i4,.nn-i8,.nn-i9,.nn-i7{ display:none !important; }
+    .nn-m-hide{ display:none !important; }
+    .nn-appicon{ width:58px; }
     .nn-cursor{ width:36px; height:auto; }
     .nn-cell{ grid-column:1 / -1 !important; }
     .nn-card.nn-feat, .nn-card.nn-feat.nn-rev{ flex-direction:column; }
@@ -246,15 +251,17 @@
         </div>
       </div>
       <div class="nn-desk" aria-hidden="true">
-        <div class="nn-item nn-i1"><span class="nn-appicon nn-app-nini">nini<i></i></span></div>
-        <div class="nn-item nn-i2"><img class="nn-thumb" src="assets/sj/web01.jpg" alt=""><span class="nn-fname">smartjob.jpg</span></div>
-        <div class="nn-item nn-fold-wrap nn-i3"><div class="nn-fold"><i></i><b></b></div><span class="nn-fname">ux/ui</span></div>
-        <div class="nn-item nn-i4"><span class="nn-appicon nn-app-ux">UX</span></div>
-        <div class="nn-item nn-i5"><img class="nn-thumb" src="assets/foto-flores.jpeg" alt=""><span class="nn-fname">nini.jpeg</span></div>
-        <div class="nn-item nn-fold-wrap nn-i6"><div class="nn-fold"><i></i><b></b></div><span class="nn-fname">branding</span></div>
-        <div class="nn-item nn-i7"><img class="nn-thumb" src="assets/hd/a18.jpg" alt=""><span class="nn-fname">ecotours.jpg</span></div>
-        <div class="nn-item nn-i8"><img class="nn-thumb" src="assets/hd/a14.jpg" alt=""><span class="nn-fname">parque.jpg</span></div>
-        <div class="nn-item nn-fold-wrap nn-i9"><div class="nn-fold"><i></i><b></b></div><span class="nn-fname">redes</span></div>
+        <div class="nn-item  nn-i5"><img class="nn-thumb" src="assets/fotos/nini.jpg" alt=""><span class="nn-fname">nini.jpg</span></div>
+        <div class="nn-item  nn-i7"><img class="nn-thumb" src="assets/fotos/stickers.jpg" alt=""><span class="nn-fname">stickers.jpg</span></div>
+        <div class="nn-item nn-i1"><span class="nn-appicon nn-app-claude"><svg viewBox="0 0 64 64" width="100%" height="100%"><g stroke="#fff" stroke-width="5.5" stroke-linecap="round"><path d="M32 12V24M32 40V52M12 32H24M40 32H52M18 18L26 26M38 38L46 46M46 18L38 26M26 38L18 46"/></g></svg></span><span class="nn-fname">Claude</span></div>
+        <div class="nn-item nn-i2"><span class="nn-appicon nn-app-vs"><svg viewBox="0 0 64 64" width="100%" height="100%"><path d="M44 7L21 28 10 19 5 22V42L10 45 21 36 44 57 59 51V13Z" fill="#1F9CF0"/><path d="M44 22V42L29 32Z" fill="#fff"/></svg></span><span class="nn-fname">Visual Studio Code</span></div>
+        <div class="nn-item nn-i4"><span class="nn-appicon nn-app-fig"><svg viewBox="0 0 64 64" width="100%" height="100%"><path d="M32 8H26a8 8 0 0 0 0 16H32Z" fill="#F24E1E"/><path d="M32 8H38a8 8 0 0 1 0 16H32Z" fill="#FF7262"/><path d="M32 24H26a8 8 0 0 0 0 16H32Z" fill="#A259FF"/><circle cx="38" cy="32" r="8" fill="#1ABCFE"/><path d="M26 40H32V48a8 8 0 1 1-6-8Z" fill="#0ACF83"/></svg></span><span class="nn-fname">Figma</span></div>
+        <div class="nn-item nn-i10"><span class="nn-appicon nn-app-cap"><svg viewBox="0 0 64 64" width="100%" height="100%"><path d="M14 18H34L52 32 34 46H14L30 32Z" fill="#fff"/><path d="M14 50H30L38 44 30 38Z" fill="#fff" opacity=".0"/></svg></span><span class="nn-fname">CapCut</span></div>
+        <div class="nn-item nn-fold-wrap nn-m-hide nn-i3"><div class="nn-fold"><i></i><b></b></div><span class="nn-fname">ux/ui</span></div>
+        <div class="nn-item nn-fold-wrap nn-m-hide nn-i6"><div class="nn-fold"><i></i><b></b></div><span class="nn-fname">branding</span></div>
+        <div class="nn-item nn-fold-wrap nn-m-hide nn-i9"><div class="nn-fold"><i></i><b></b></div><span class="nn-fname">redes</span></div>
+        <div class="nn-item nn-m-hide nn-i8"><img class="nn-thumb" src="assets/fotos/atardecer.jpg" alt=""><span class="nn-fname">atardecer.jpg</span></div>
+        <div class="nn-item nn-m-hide nn-i11"><img class="nn-thumb" src="assets/fotos/completo.jpg" alt=""><span class="nn-fname">completo.jpg</span></div>
       </div>
     </div>
   </header>
