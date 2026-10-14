@@ -1,0 +1,78 @@
+{
+  "32bd960d-b924-4c23-8e9e-4cd3f1f42918": {
+    "kind": "image",
+    "mime": "image/jpeg",
+    "file": "assets/foto-flores.jpeg"
+  },
+  "aea4bed3-4bc2-4b27-b3ab-a0eb9df81f75": {
+    "kind": "runtime",
+    "mime": "text/javascript",
+    "file": "support.js",
+    "compressed": true
+  },
+  "d0de200c-4241-486c-a1a3-0625d32a9c46": {
+    "kind": "font",
+    "mime": "font/woff2",
+    "file": "build/fonts/d0de200c-4241-486c-a1a3-0625d32a9c46.woff2"
+  },
+  "be68064b-f9e7-49a2-b1c6-170854cb2d61": {
+    "kind": "font",
+    "mime": "font/woff2",
+    "file": "build/fonts/be68064b-f9e7-49a2-b1c6-170854cb2d61.woff2"
+  },
+  "89e4466d-e02f-4165-b09f-25bba5ae8051": {
+    "kind": "font",
+    "mime": "font/woff2",
+    "file": "build/fonts/89e4466d-e02f-4165-b09f-25bba5ae8051.woff2"
+  },
+  "c47ad4c5-5f64-43c6-b0a7-538471d211eb": {
+    "kind": "font",
+    "mime": "font/woff2",
+    "file": "build/fonts/c47ad4c5-5f64-43c6-b0a7-538471d211eb.woff2"
+  },
+  "09269889-b788-4090-a6ef-3feccddc7af6": {
+    "kind": "font",
+    "mime": "font/woff2",
+    "file": "build/fonts/09269889-b788-4090-a6ef-3feccddc7af6.woff2"
+  },
+  "3a3b0837-32b7-4ff0-b61f-8c66a54e6b06": {
+    "kind": "font",
+    "mime": "font/woff2",
+    "file": "build/fonts/3a3b0837-32b7-4ff0-b61f-8c66a54e6b06.woff2"
+  },
+  "ec550c78-47b3-4d4b-ba25-572148ad6c62": {
+    "kind": "font",
+    "mime": "font/woff2",
+    "file": "build/fonts/ec550c78-47b3-4d4b-ba25-572148ad6c62.woff2"
+  },
+  "562fa819-49be-4052-8c8c-4c1409e2bf14": {
+    "kind": "font",
+    "mime": "font/woff2",
+    "file": "build/fonts/562fa819-49be-4052-8c8c-4c1409e2bf14.woff2"
+  },
+  "470b9d7d-b0a6-4d8f-929e-b8c79626d69a": {
+    "kind": "font",
+    "mime": "font/woff2",
+    "file": "build/fonts/470b9d7d-b0a6-4d8f-929e-b8c79626d69a.woff2"
+  },
+  "8b892b8a-6268-4940-939b-c6858d8c8ee3": {
+    "kind": "font",
+    "mime": "font/woff2",
+    "file": "build/fonts/8b892b8a-6268-4940-939b-c6858d8c8ee3.woff2"
+  },
+  "7eaf4a4e-be6b-443c-9abc-1d04a6bd2c75": {
+    "kind": "font",
+    "mime": "font/woff2",
+    "file": "build/fonts/7eaf4a4e-be6b-443c-9abc-1d04a6bd2c75.woff2"
+  },
+  "0ed31d62-72ff-4584-862e-9fbd75842e52": {
+    "kind": "font",
+    "mime": "font/woff2",
+    "file": "build/fonts/0ed31d62-72ff-4584-862e-9fbd75842e52.woff2"
+  },
+  "66bf6804-2be7-4a5f-a306-24a2626e65a9": {
+    "kind": "font",
+    "mime": "font/woff2",
+    "file": "build/fonts/66bf6804-2be7-4a5f-a306-24a2626e65a9.woff2"
+  }
+}

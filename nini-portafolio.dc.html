@@ -42,209 +42,361 @@
 <meta name="ext-resource-dependency" content="assets/sj/invit1.jpg">
 <meta name="ext-resource-dependency" content="assets/sj/invit2.jpg">
 <meta name="ext-resource-dependency" content="assets/sj/invit3.jpg">
-<title>nini — Portafolio · Constanza Hernández</title>
-<meta name="description" content="Portafolio de Constanza Hernández, diseñadora gráfica enfocada en UX/UI, front-end y contenido digital.">
-<meta property="og:title" content="nini — Portafolio · Constanza Hernández">
-<meta property="og:description" content="Diseñadora gráfica · UX/UI · Front-end · Docencia">
+<title>Constanza Hernández (nini) · Portafolio UX/UI</title>
+<meta name="description" content="Portafolio de Constanza Hernández (nini), diseñadora gráfica chilena enfocada en UX/UI, diseño apoyado en IA y contenido digital.">
+<meta property="og:title" content="Constanza Hernández (nini) · Portafolio UX/UI">
+<meta property="og:description" content="Diseñadora gráfica · UX/UI · Diseño con IA · Docencia">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://ninidesign.cl/">
 <meta property="og:image" content="https://ninidesign.cl/assets/hd/a00.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="nini — Portafolio · Constanza Hernández">
+<meta name="twitter:title" content="Constanza Hernández (nini) · Portafolio UX/UI">
 <meta name="twitter:image" content="https://ninidesign.cl/assets/hd/a00.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
 <style>
+  :root{ --ink:#141414; --violet:#7A3CFF; --lime:#D9FF3F; --line:rgba(20,20,20,.12); }
   *{ box-sizing:border-box; }
   html{ scroll-behavior:smooth; }
   body{ margin:0; }
-  ::selection{ background:#141414; color:#fff; }
-  @keyframes nm-marq{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
-  @keyframes nm-float{ 0%,100%{ transform:translate(0,0) rotate(0deg); } 50%{ transform:translate(0,-26px) rotate(8deg); } }
-  @keyframes nm-blob{ 0%,100%{ border-radius:46% 54% 60% 40% / 52% 44% 56% 48%; } 50%{ border-radius:62% 38% 42% 58% / 40% 60% 40% 60%; } }
-  @keyframes nm-spin{ from{ transform:rotate(0); } to{ transform:rotate(360deg); } }
-  @keyframes nm-rise{ from{ opacity:0; transform:translateY(40px); } to{ opacity:1; transform:none; } }
-  @keyframes nm-menu-in{ from{ opacity:0; transform:translateY(-12px); } to{ opacity:1; transform:none; } }
-  @media(max-width:640px){ .nm-nav-links{ display:none !important; } .nm-burger-wrap{ display:flex !important; } }
-  @media(min-width:641px){ .nm-burger-wrap{ display:none !important; } .nm-mob-menu{ display:none !important; } }
+  ::selection{ background:#141414; color:#D9FF3F; }
+  @keyframes nn-marq{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
+  @keyframes nn-float{ 0%,100%{ transform:translate(0,0) rotate(0deg); } 50%{ transform:translate(0,-18px) rotate(5deg); } }
+  @keyframes nn-bob{ 0%,100%{ transform:translate(0,0); } 50%{ transform:translate(10px,-12px); } }
+  @keyframes nn-blob{ 0%,100%{ border-radius:46% 54% 60% 40% / 52% 44% 56% 48%; } 50%{ border-radius:62% 38% 42% 58% / 40% 60% 40% 60%; } }
+  @keyframes nn-spin{ from{ transform:rotate(0); } to{ transform:rotate(360deg); } }
+  @keyframes nn-pulse{ 0%{ box-shadow:0 0 0 0 rgba(217,255,63,.8); } 70%{ box-shadow:0 0 0 10px rgba(217,255,63,0); } 100%{ box-shadow:0 0 0 0 rgba(217,255,63,0); } }
+  @keyframes nn-menu-in{ from{ opacity:0; transform:translateY(-12px); } to{ opacity:1; transform:none; } }
+  @keyframes nn-wiggle{ 0%,100%{ rotate:0deg; } 25%{ rotate:-5deg; } 75%{ rotate:5deg; } }
+
+  .nn-mono{ font-family:'Space Mono',monospace; }
+  .nn-hand{ font-family:'Caveat',cursive; font-weight:700; }
+  .nn-disp{ font-family:'Bricolage Grotesque',sans-serif; }
+  .nn-dots{ background-image:radial-gradient(rgba(20,20,20,.17) 1.2px, transparent 1.4px); background-size:26px 26px; }
+  .nn-dots-dark{ background-image:radial-gradient(rgba(255,255,255,.13) 1.2px, transparent 1.4px); background-size:26px 26px; }
+  .nn-glass{ background:rgba(255,255,255,.6); -webkit-backdrop-filter:blur(16px) saturate(1.5); backdrop-filter:blur(16px) saturate(1.5); border:1px solid rgba(20,20,20,.1); }
+
+  /* stickers arrastrables */
+  .nn-stk{ position:absolute; z-index:6; cursor:grab; user-select:none; -webkit-user-select:none; touch-action:none;
+    transform:translate(var(--dx,0px),var(--dy,0px)) rotate(var(--r,0deg)); transition:filter .2s; }
+  .nn-stk img{ display:block; width:100%; height:auto; pointer-events:none; -webkit-user-drag:none; }
+  .nn-stk:hover{ filter:drop-shadow(0 10px 14px rgba(20,20,20,.28)); }
+  .nn-stk:hover img{ animation:nn-wiggle .5s ease; }
+  .nn-stk.is-drag{ cursor:grabbing; z-index:40; filter:drop-shadow(0 16px 20px rgba(20,20,20,.3)); }
+  .nn-stk-txt{ position:absolute; inset:0; display:flex; align-items:center; justify-content:center; pointer-events:none; }
+
+  /* nav */
+  .nn-nav{ position:fixed; top:14px; left:50%; transform:translateX(-50%); z-index:50; display:flex; align-items:center; gap:clamp(14px,2.4vw,30px);
+    padding:9px 10px 9px 22px; border-radius:100px; width:max-content; max-width:calc(100vw - 24px); }
+  .nn-nav a.nn-lnk{ font-size:15px; font-weight:500; color:#141414; text-decoration:none; opacity:.75; transition:opacity .2s,color .2s; }
+  .nn-nav a.nn-lnk:hover{ opacity:1; color:var(--brand,#FF2E88); }
+  .nn-pill{ display:inline-flex; align-items:center; gap:8px; font-weight:600; font-size:15px; text-decoration:none; border-radius:100px; transition:transform .2s, background .2s, color .2s; cursor:pointer; border:1.5px solid #141414; }
+  .nn-pill-dark{ background:#141414; color:#fff; padding:14px 26px; }
+  .nn-pill-dark:hover{ background:var(--brand,#FF2E88); border-color:var(--brand,#FF2E88); transform:translateY(-2px); }
+  .nn-pill-line{ background:transparent; color:#141414; padding:14px 24px; }
+  .nn-pill-line:hover{ background:#141414; color:var(--paper,#F4EFE6); }
+  .nn-lang{ font-family:'Space Mono',monospace; font-weight:700; font-size:12.5px; letter-spacing:.04em; cursor:pointer; background:#141414; color:#fff; border:none; border-radius:100px; padding:10px 14px; display:flex; align-items:center; gap:6px; transition:background .2s; }
+  .nn-lang:hover{ background:var(--brand,#FF2E88); }
+
+  /* hero */
+  .nn-hero{ position:relative; min-height:100vh; display:flex; align-items:center; padding:120px clamp(20px,5vw,64px) 70px; overflow:hidden; --mx:72%; --my:28%; }
+  .nn-spot{ position:absolute; inset:0; pointer-events:none; background:radial-gradient(520px circle at var(--mx) var(--my), rgba(255,46,136,.16), rgba(122,60,255,.07) 45%, transparent 70%); }
+  .nn-hero-grid{ position:relative; z-index:2; width:100%; max-width:1500px; margin:0 auto; display:grid; grid-template-columns:minmax(0,1.4fr) minmax(0,.8fr); gap:clamp(28px,4vw,70px); align-items:center; }
+  .nn-status{ display:inline-flex; align-items:center; gap:10px; padding:9px 16px; border-radius:100px; font-size:12.5px; letter-spacing:.04em; }
+  .nn-dot-live{ width:9px; height:9px; border-radius:50%; background:#34D26A; animation:nn-pulse 2s infinite; flex:none; }
+  .nn-inspector{ position:relative; border-radius:26px; padding:22px; box-shadow:0 40px 80px -40px rgba(20,20,20,.45), 0 2px 0 rgba(255,255,255,.7) inset; transform:rotate(1.6deg); }
+  .nn-row{ display:flex; justify-content:space-between; gap:16px; padding:13px 0; border-top:1px dashed rgba(20,20,20,.18); font-size:14.5px; }
+  .nn-chip{ font-family:'Space Mono',monospace; font-size:12px; letter-spacing:.03em; padding:7px 13px; border-radius:100px; border:1.5px solid #141414; background:transparent; }
+  .nn-chip.on{ background:var(--brand,#FF2E88); border-color:var(--brand,#FF2E88); color:#fff; }
+
+  /* proyectos */
+  .nn-grid{ display:grid; grid-template-columns:repeat(12,minmax(0,1fr)); gap:clamp(16px,2vw,26px); align-items:stretch; }
+  .nn-cell{ min-width:0; display:flex; }
+  .nn-card{ position:relative; width:100%; display:flex; flex-direction:column; border-radius:28px; overflow:hidden; background:rgba(255,255,255,.65); border:1.5px solid rgba(20,20,20,.12); cursor:pointer;
+    transition:transform .35s cubic-bezier(.2,.7,.2,1), border-color .3s, box-shadow .35s; }
+  .nn-card:hover{ transform:translateY(-6px) !important; border-color:var(--accent); box-shadow:0 34px 60px -34px var(--accent); }
+  .nn-media{ position:relative; overflow:hidden; background:#141414; height:clamp(230px,25vw,360px); flex:none; }
+  .nn-card.nn-feat{ flex-direction:row; }
+  .nn-card.nn-feat .nn-media{ flex:1.35 1 0; height:auto; min-height:440px; }
+  .nn-card.nn-feat.nn-rev{ flex-direction:row-reverse; }
+  .nn-card.nn-feat .nn-body{ flex:1 1 0; justify-content:center; padding:clamp(24px,3vw,48px); }
+  .nn-img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .7s cubic-bezier(.2,.7,.2,1); }
+  .nn-card:hover .nn-img{ transform:scale(1.05); }
+  .nn-badge{ position:absolute; z-index:3; top:14px; left:14px; font-size:12px; font-weight:700; letter-spacing:.06em; background:rgba(255,255,255,.92); color:#141414; padding:6px 11px; border-radius:100px; }
+  .nn-tape{ position:absolute; z-index:4; width:110px; top:-6px; right:18px; transform:rotate(7deg); pointer-events:none; }
+  .nn-pst{ position:absolute; z-index:5; right:14px; bottom:12px; width:76px; pointer-events:none; transform:rotate(-8deg); transition:transform .4s cubic-bezier(.2,.7,.2,1); }
+  .nn-card:hover .nn-pst{ transform:rotate(6deg) scale(1.12); }
+  .nn-body{ display:flex; flex-direction:column; gap:10px; padding:22px 24px 26px; flex:1; }
+  .nn-ttl{ font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:clamp(26px,3vw,40px); line-height:1; letter-spacing:-.03em; margin:0; }
+  .nn-feat .nn-ttl{ font-size:clamp(40px,5.4vw,80px); }
+  .nn-go{ flex:none; width:44px; height:44px; border-radius:50%; border:1.5px solid #141414; display:flex; align-items:center; justify-content:center; font-size:18px; transition:transform .35s, background .3s, color .3s, border-color .3s; }
+  .nn-card:hover .nn-go{ background:var(--accent); border-color:var(--accent); color:#fff; transform:rotate(45deg); }
+  .nn-tag{ font-family:'Space Mono',monospace; font-size:11.5px; letter-spacing:.03em; padding:6px 12px; border-radius:100px; border:1.5px solid var(--accent); color:var(--accent); }
+
+  /* sobre mí */
+  .nn-bento{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
+  .nn-mini{ border-radius:20px; padding:18px 18px 20px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.16); transition:background .25s, transform .25s, border-color .25s; }
+  .nn-mini:hover{ background:rgba(255,46,136,.16); border-color:var(--brand,#FF2E88); transform:translateY(-3px); }
+  .nn-word{ font-family:'Bricolage Grotesque',sans-serif; font-weight:600; font-size:clamp(16px,1.8vw,20px); padding:8px 16px; border-radius:100px; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.18); }
+  .nn-polaroid{ position:relative; background:#fff; padding:14px 14px 58px; border-radius:6px; box-shadow:0 36px 60px -30px rgba(0,0,0,.7); transform:rotate(-3deg); }
+
+  @media(max-width:900px){
+    .nn-hero-grid{ grid-template-columns:minmax(0,1fr); }
+    .nn-inspector{ transform:none; max-width:460px; }
+    .nn-cell{ grid-column:1 / -1 !important; }
+    .nn-card.nn-feat, .nn-card.nn-feat.nn-rev{ flex-direction:column; }
+    .nn-card.nn-feat .nn-media{ height:clamp(230px,56vw,420px); min-height:0; flex:none; }
+    .nn-hide-sm{ display:none !important; }
+  }
+  @media(max-width:640px){
+    .nn-nav-links{ display:none !important; }
+    .nn-burger-wrap{ display:flex !important; }
+    .nn-nav{ padding:8px 10px 8px 18px; }
+    .nn-bento{ grid-template-columns:minmax(0,1fr); }
+  }
+  @media(min-width:641px){ .nn-burger-wrap{ display:none !important; } .nn-mob-menu{ display:none !important; } }
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{ animation:none !important; transition-duration:.01ms !important; scroll-behavior:auto !important; }
+    [data-reveal]{ opacity:1 !important; transform:none !important; }
+  }
 </style>
 </helmet>
 <div style="--brand: {{ brand }}; --paper: {{ paper }}; background:var(--paper,#F4EFE6); color:#141414; font-family:'Instrument Sans',system-ui,sans-serif; min-height:100vh; overflow-x:hidden; position:relative;">
 
-  <template id="__bundler_thumbnail">
-    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-      <rect width="100" height="100" fill="#F4EFE6"/>
-      <text x="50" y="62" font-family="Georgia, serif" font-weight="800" font-size="46" text-anchor="middle" fill="#141414">ni</text>
-      <circle cx="69" cy="56" r="6" fill="#FF2E88"/>
-    </svg>
-  </template>
-
   <!-- NAV -->
-  <nav style="position:fixed; top:0; left:0; right:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:18px clamp(20px,5vw,64px); backdrop-filter:blur(10px); background:color-mix(in srgb, var(--paper,#F4EFE6) 72%, transparent); border-bottom:1px solid rgba(20,20,20,.08);">
-    <a href="#top" style="font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:26px; letter-spacing:-.04em; color:#141414; text-decoration:none; display:flex; align-items:center; gap:8px;">nini<span style="display:inline-block; width:9px; height:9px; border-radius:50%; background:var(--brand,#FF2E88);"></span></a>
-    <div class="nm-nav-links" style="display:flex; align-items:center; gap:clamp(14px,2.5vw,34px);">
-      <a href="#work" style="font-size:15px; font-weight:500; color:#141414; text-decoration:none; opacity:.8;" style-hover="opacity:1 !important; color:var(--brand,#FF2E88) !important;">{{ t.nav.projects }}</a>
-      <a href="#about" style="font-size:15px; font-weight:500; color:#141414; text-decoration:none; opacity:.8;" style-hover="opacity:1 !important; color:var(--brand,#FF2E88) !important;">{{ t.nav.about }}</a>
-      <a href="#contact" style="font-size:15px; font-weight:500; color:#141414; text-decoration:none; opacity:.8;" style-hover="opacity:1 !important; color:var(--brand,#FF2E88) !important;">{{ t.nav.contact }}</a>
-      <button onClick="{{ toggle }}" style="font-family:'Space Mono',monospace; font-weight:700; font-size:13px; letter-spacing:.04em; cursor:pointer; background:#141414; color:#fff; border:none; border-radius:100px; padding:9px 15px; display:flex; align-items:center; gap:6px;" style-hover="background:var(--brand,#FF2E88) !important;">
-        <span style="opacity:.55;">{{ langCurrent }}</span>/<span>{{ langOther }}</span>
-      </button>
+  <nav class="nn-nav nn-glass" aria-label="Principal">
+    <a href="#top" class="nn-disp" style="font-weight:800; font-size:25px; letter-spacing:-.04em; color:#141414; text-decoration:none; display:flex; align-items:center; gap:7px;">nini<span style="display:inline-block; width:9px; height:9px; border-radius:50%; background:var(--brand,#FF2E88);"></span></a>
+    <div class="nn-nav-links" style="display:flex; align-items:center; gap:clamp(14px,2.4vw,30px);">
+      <a class="nn-lnk" href="#work">{{ t.nav.projects }}</a>
+      <a class="nn-lnk" href="#about">{{ t.nav.about }}</a>
+      <a class="nn-lnk" href="#contact">{{ t.nav.contact }}</a>
+      <button class="nn-lang" onClick="{{ toggle }}" aria-label="Language"><span style="opacity:.55;">{{ langCurrent }}</span>/<span>{{ langOther }}</span></button>
     </div>
-    <div class="nm-burger-wrap" style="display:none; align-items:center; gap:10px;">
-      <button onClick="{{ toggle }}" style="font-family:'Space Mono',monospace; font-weight:700; font-size:12px; letter-spacing:.04em; cursor:pointer; background:#141414; color:#fff; border:none; border-radius:100px; padding:8px 13px; display:flex; align-items:center; gap:5px;" style-hover="background:var(--brand,#FF2E88) !important;">
-        <span style="opacity:.55;">{{ langCurrent }}</span>/<span>{{ langOther }}</span>
-      </button>
-      <button onClick="{{ toggleMenu }}" aria-label="Menú" style="cursor:pointer; background:none; border:none; padding:6px; display:flex; flex-direction:column; gap:5px; justify-content:center; align-items:center;">
-        <span style="display:block; width:24px; height:2px; background:#141414; border-radius:2px;"></span>
-        <span style="display:block; width:24px; height:2px; background:#141414; border-radius:2px;"></span>
-        <span style="display:block; width:24px; height:2px; background:#141414; border-radius:2px;"></span>
+    <div class="nn-burger-wrap" style="display:none; align-items:center; gap:8px;">
+      <button class="nn-lang" onClick="{{ toggle }}" aria-label="Language"><span style="opacity:.55;">{{ langCurrent }}</span>/<span>{{ langOther }}</span></button>
+      <button onClick="{{ toggleMenu }}" aria-label="Menú" style="cursor:pointer; background:none; border:none; padding:8px; display:flex; flex-direction:column; gap:5px; justify-content:center; align-items:center;">
+        <span style="display:block; width:22px; height:2px; background:#141414; border-radius:2px;"></span>
+        <span style="display:block; width:22px; height:2px; background:#141414; border-radius:2px;"></span>
       </button>
     </div>
   </nav>
   <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
-    <div class="nm-mob-menu" style="position:fixed; inset:0; z-index:49; background:var(--paper,#F4EFE6); display:flex; flex-direction:column; justify-content:center; align-items:center; gap:clamp(28px,6vw,48px); padding:100px 40px 60px; animation:nm-menu-in .25s ease;">
-      <a href="#work" onClick="{{ closeMenu }}" style="font-family:'Bricolage Grotesque',sans-serif; font-size:clamp(40px,10vw,64px); font-weight:800; color:#141414; text-decoration:none; letter-spacing:-.03em;" style-hover="color:var(--brand,#FF2E88) !important;">{{ t.nav.projects }}</a>
-      <a href="#about" onClick="{{ closeMenu }}" style="font-family:'Bricolage Grotesque',sans-serif; font-size:clamp(40px,10vw,64px); font-weight:800; color:#141414; text-decoration:none; letter-spacing:-.03em;" style-hover="color:var(--brand,#FF2E88) !important;">{{ t.nav.about }}</a>
-      <a href="#contact" onClick="{{ closeMenu }}" style="font-family:'Bricolage Grotesque',sans-serif; font-size:clamp(40px,10vw,64px); font-weight:800; color:#141414; text-decoration:none; letter-spacing:-.03em;" style-hover="color:var(--brand,#FF2E88) !important;">{{ t.nav.contact }}</a>
-      <button onClick="{{ toggle }}" style="font-family:'Space Mono',monospace; font-weight:700; font-size:14px; letter-spacing:.04em; cursor:pointer; background:#141414; color:#fff; border:none; border-radius:100px; padding:12px 22px; margin-top:8px;" style-hover="background:var(--brand,#FF2E88) !important;">
-        <span style="opacity:.55;">{{ langCurrent }}</span>/<span>{{ langOther }}</span>
-      </button>
+    <div class="nn-mob-menu nn-dots" style="position:fixed; inset:0; z-index:49; background-color:var(--paper,#F4EFE6); display:flex; flex-direction:column; justify-content:center; align-items:center; gap:clamp(24px,6vw,44px); padding:100px 40px 60px; animation:nn-menu-in .25s ease;">
+      <a class="nn-disp" href="#work" onClick="{{ closeMenu }}" style="font-size:clamp(40px,11vw,64px); font-weight:800; color:#141414; text-decoration:none; letter-spacing:-.03em;">{{ t.nav.projects }}</a>
+      <a class="nn-disp" href="#about" onClick="{{ closeMenu }}" style="font-size:clamp(40px,11vw,64px); font-weight:800; color:#141414; text-decoration:none; letter-spacing:-.03em;">{{ t.nav.about }}</a>
+      <a class="nn-disp" href="#contact" onClick="{{ closeMenu }}" style="font-size:clamp(40px,11vw,64px); font-weight:800; color:#141414; text-decoration:none; letter-spacing:-.03em;">{{ t.nav.contact }}</a>
     </div>
   </sc-if>
 
   <!-- HERO -->
-  <header id="top" data-screen-label="Hero" style="position:relative; min-height:100vh; display:flex; flex-direction:column; justify-content:center; padding:120px clamp(20px,5vw,64px) 60px;">
-    <div style="position:absolute; top:18%; right:8%; width:clamp(160px,26vw,380px); height:clamp(160px,26vw,380px); background:var(--brand,#FF2E88); opacity:.16; filter:blur(8px); animation:nm-blob 14s ease-in-out infinite, nm-float 9s ease-in-out infinite; z-index:0;"></div>
-    <div style="position:absolute; bottom:16%; left:4%; width:clamp(90px,12vw,150px); height:clamp(90px,12vw,150px); border:2px solid #141414; border-radius:50%; opacity:.5; animation:nm-float 11s ease-in-out infinite; z-index:0;"></div>
-    <div style="position:absolute; top:30%; left:42%; font-family:'Space Mono',monospace; font-size:34px; color:var(--brand,#FF2E88); animation:nm-spin 18s linear infinite; z-index:0;">✳</div>
+  <header id="top" class="nn-hero nn-dots" data-screen-label="Hero">
+    <div class="nn-spot"></div>
+    <div style="position:absolute; top:6%; right:-6%; width:clamp(260px,38vw,560px); height:clamp(260px,38vw,560px); background:linear-gradient(135deg, var(--brand,#FF2E88), var(--violet,#7A3CFF)); opacity:.2; filter:blur(40px); animation:nn-blob 16s ease-in-out infinite; z-index:0;"></div>
+    <div style="position:absolute; bottom:-8%; left:-4%; width:clamp(180px,24vw,340px); height:clamp(180px,24vw,340px); background:var(--lime,#D9FF3F); opacity:.35; filter:blur(50px); animation:nn-blob 20s ease-in-out infinite reverse; z-index:0;"></div>
 
-    <div style="position:relative; z-index:2; max-width:1500px; margin:0 auto; width:100%;">
-      <div style="font-family:'Space Mono',monospace; font-size:clamp(12px,1.4vw,15px); letter-spacing:.22em; text-transform:uppercase; color:#141414; opacity:.65; margin-bottom:18px;">{{ t.hero.role }} — {{ t.hero.tagline }}</div>
-      <h1 style="font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:clamp(120px,24vw,420px); line-height:.82; letter-spacing:-.05em; margin:0; color:#141414;">nini<span style="color:var(--brand,#FF2E88);">.</span></h1>
-      <p style="font-size:clamp(17px,2.1vw,24px); line-height:1.5; max-width:640px; margin:30px 0 0; color:#1c1c1c;">{{ t.hero.intro }}</p>
-      <div style="display:flex; flex-wrap:wrap; gap:14px; align-items:center; margin-top:36px;">
-        <a href="#work" style="font-size:16px; font-weight:600; background:#141414; color:#fff; text-decoration:none; padding:15px 28px; border-radius:100px; display:inline-flex; align-items:center; gap:10px;" style-hover="background:var(--brand,#FF2E88) !important; transform:translateY(-2px) !important;">{{ t.hero.cta }} <span style="font-size:18px;">↓</span></a>
-        <a href="#contact" style="font-size:16px; font-weight:600; color:#141414; text-decoration:none; padding:15px 26px; border-radius:100px; border:1.5px solid #141414;" style-hover="background:#141414 !important; color:var(--paper,#F4EFE6) !important;">{{ t.hero.cta2 }}</a>
-        <span style="font-family:'Space Mono',monospace; font-size:13px; letter-spacing:.04em; opacity:.6; margin-left:6px;">{{ t.hero.meta }}</span>
+    <div class="nn-hero-grid">
+      <div>
+        <div class="nn-status nn-glass nn-mono"><span class="nn-dot-live"></span>{{ t.hero.status }}</div>
+
+        <div style="position:relative; display:inline-block; margin-top:26px;">
+          <h1 class="nn-disp" style="font-weight:800; font-size:clamp(110px,19vw,310px); line-height:.82; letter-spacing:-.04em; margin:0; color:#141414;">nini<span style="color:var(--brand,#FF2E88);">.</span></h1>
+          <img src="assets/stickers/underline.svg" alt="" style="position:absolute; left:2%; bottom:-6%; width:78%; height:auto; pointer-events:none;">
+          <div class="nn-hide-sm" style="position:absolute; right:-20%; top:-2%; z-index:5; display:flex; align-items:flex-start; animation:nn-bob 6s ease-in-out infinite; pointer-events:none;">
+            <img src="assets/stickers/sticker-cursor.svg" alt="" style="width:46px; height:auto; margin-top:-6px;">
+            <span class="nn-mono" style="margin:26px 0 0 -8px; background:var(--brand,#FF2E88); color:#fff; font-size:13px; font-weight:700; padding:7px 13px; border-radius:6px 16px 16px 16px; box-shadow:0 10px 20px -8px rgba(255,46,136,.7);">Constanza</span>
+          </div>
+        </div>
+
+        <div class="nn-mono" style="margin-top:34px; font-size:clamp(12px,1.3vw,14px); letter-spacing:.2em; text-transform:uppercase; opacity:.65;">{{ t.hero.role }} · {{ t.hero.tagline }}</div>
+        <p style="font-size:clamp(17px,2vw,23px); line-height:1.5; max-width:620px; margin:16px 0 0; color:#1c1c1c;">{{ t.hero.intro }}</p>
+        <div style="display:flex; flex-wrap:wrap; gap:12px; align-items:center; margin-top:32px;">
+          <a class="nn-pill nn-pill-dark" href="#work">{{ t.hero.cta }} <span style="font-size:17px;">↓</span></a>
+          <a class="nn-pill nn-pill-line" href="#contact">{{ t.hero.cta2 }}</a>
+        </div>
       </div>
+
+      <div style="position:relative;">
+        <div class="nn-inspector nn-glass">
+          <div style="display:flex; align-items:center; gap:14px; padding-bottom:16px;">
+            <img src="assets/foto-flores.jpeg" alt="Constanza Hernández" style="width:58px; height:58px; border-radius:50%; object-fit:cover; object-position:50% 20%; border:2px solid #fff; box-shadow:0 6px 14px -6px rgba(20,20,20,.5);">
+            <div style="min-width:0;">
+              <div class="nn-disp" style="font-weight:800; font-size:22px; letter-spacing:-.03em; line-height:1.05;">Constanza Hernández</div>
+              <div class="nn-mono" style="font-size:12px; opacity:.6; margin-top:4px;">{{ t.hero.cardRole }}</div>
+            </div>
+          </div>
+          <sc-for list="{{ t.hero.rows }}" as="r" hint-placeholder-count="3">
+            <div class="nn-row"><span class="nn-mono" style="opacity:.55; font-size:12.5px;">{{ r.k }}</span><span style="font-weight:600; text-align:right;">{{ r.v }}</span></div>
+          </sc-for>
+          <div class="nn-row" style="flex-direction:column; gap:10px;">
+            <span class="nn-mono" style="opacity:.55; font-size:12.5px;">{{ t.hero.variants }}</span>
+            <div style="display:flex; flex-wrap:wrap; gap:8px;">
+              <span class="nn-chip on">{{ t.about.skills.0 }}</span>
+              <span class="nn-chip">{{ t.about.skills.1 }}</span>
+              <span class="nn-chip">{{ t.about.skills.2 }}</span>
+              <span class="nn-chip">{{ t.about.skills.3 }}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="nn-stk" data-drag style="--r:-10deg; top:-70px; left:-70px; width:104px;">
+          <img src="assets/stickers/sticker-burst.svg" alt="">
+          <span class="nn-stk-txt nn-hand" style="color:#fff; font-size:34px;">{{ t.hero.hi }}</span>
+        </div>
+        <div class="nn-stk" data-drag style="--r:14deg; top:-58px; right:-6px; width:84px;"><img src="assets/stickers/sticker-smile.svg" alt=""></div>
+        <div class="nn-stk nn-hide-sm" data-drag style="--r:-8deg; bottom:-44px; left:-44px; width:86px;"><img src="assets/stickers/sticker-heart.svg" alt=""></div>
+        <div class="nn-stk nn-hide-sm" data-drag style="--r:10deg; bottom:-30px; right:-18px; width:70px;"><img src="assets/stickers/sticker-bolt.svg" alt=""></div>
+        <div class="nn-hide-sm" style="position:absolute; z-index:5; left:-150px; top:92px; display:flex; flex-direction:column; align-items:flex-start; pointer-events:none;">
+          <img src="assets/stickers/arrow.svg" alt="" style="width:70px; height:auto; margin-left:62px; margin-bottom:-4px;">
+          <span class="nn-hand" style="font-size:30px; line-height:1; transform:rotate(-8deg);">{{ t.hero.me }}</span>
+        </div>
     </div>
+    <img class="nn-hide-sm" src="assets/stickers/sparkle.svg" alt="" style="position:absolute; z-index:1; left:46%; top:16%; width:44px; animation:nn-spin 14s linear infinite; pointer-events:none;">
+    <img src="assets/stickers/asterisk.svg" alt="" style="position:absolute; z-index:1; left:3%; bottom:9%; width:54px; animation:nn-float 9s ease-in-out infinite; pointer-events:none;">
   </header>
 
   <!-- MARQUEE -->
-  <div style="background:#141414; color:var(--paper,#F4EFE6); padding:20px 0; overflow:hidden; white-space:nowrap; border-top:1px solid #141414; border-bottom:1px solid #141414;">
-    <div style="display:inline-flex; align-items:center; animation:nm-marq 24s linear infinite;">
+  <div style="background:#141414; color:var(--paper,#F4EFE6); padding:20px 0; overflow:hidden; white-space:nowrap; border-top:1px solid #141414; border-bottom:1px solid #141414; transform:rotate(-1.2deg); margin:-14px -20px 0; position:relative; z-index:3;">
+    <div style="display:inline-flex; align-items:center; animation:nn-marq 28s linear infinite;">
       <sc-for list="{{ marqueeLoop }}" as="w" hint-placeholder-count="12">
-        <span style="font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:clamp(26px,4vw,52px); letter-spacing:-.02em; padding:0 26px;">{{ w }}</span>
-        <span style="color:var(--brand,#FF2E88); font-size:clamp(20px,3vw,40px); padding-right:26px;">✳</span>
+        <span class="nn-disp" style="font-weight:700; font-size:clamp(26px,4vw,52px); letter-spacing:-.02em; padding:0 24px;">{{ w }}</span>
+        <img src="assets/stickers/sparkle.svg" alt="" style="width:clamp(22px,3vw,36px); height:auto; margin-right:24px;">
       </sc-for>
     </div>
   </div>
 
   <!-- WORK -->
-  <section id="work" data-screen-label="Proyectos" style="padding:clamp(70px,9vw,140px) clamp(20px,5vw,64px); max-width:1500px; margin:0 auto;">
-    <div data-reveal style="opacity:0; transform:translateY(40px); transition:opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); display:flex; align-items:baseline; justify-content:space-between; flex-wrap:wrap; gap:16px; margin-bottom:clamp(40px,6vw,80px);">
-      <h2 style="font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:clamp(44px,8vw,110px); line-height:.9; letter-spacing:-.04em; margin:0;">{{ t.work.title }}</h2>
-      <span style="font-family:'Space Mono',monospace; font-size:13px; letter-spacing:.18em; text-transform:uppercase; opacity:.6;">{{ t.work.kicker }} · {{ projectCount }}</span>
+  <section id="work" data-screen-label="Proyectos" style="padding:clamp(80px,10vw,150px) clamp(20px,5vw,64px) clamp(60px,8vw,120px); max-width:1500px; margin:0 auto;">
+    <div data-reveal style="opacity:0; transform:translateY(40px); transition:opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:18px; margin-bottom:clamp(36px,5vw,70px);">
+      <div style="position:relative; display:inline-block;">
+        <h2 class="nn-disp" style="font-weight:800; font-size:clamp(48px,8.5vw,120px); line-height:.9; letter-spacing:-.045em; margin:0; position:relative; z-index:1;">{{ t.work.title }}</h2>
+        <img src="assets/stickers/circle-mag.svg" alt="" style="position:absolute; left:-6%; top:-22%; width:112%; height:auto; pointer-events:none; z-index:2;">
+      </div>
+      <div style="display:flex; align-items:center; gap:14px;">
+        <span class="nn-mono" style="font-size:13px; letter-spacing:.16em; text-transform:uppercase; opacity:.6;">{{ t.work.kicker }}</span>
+        <span class="nn-mono nn-glass" style="font-size:13px; font-weight:700; padding:7px 14px; border-radius:100px;">{{ projectCount }}</span>
+      </div>
     </div>
 
-    <div style="display:flex; flex-direction:column; gap:clamp(60px,9vw,130px);">
+    <div class="nn-grid">
       <sc-for list="{{ projects }}" as="p" hint-placeholder-count="0">
-        <article data-reveal style="--accent: {{ p.accent }}; opacity:0; transform:translateY(48px); transition:opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); display:flex; flex-direction:{{ p.dir }}; flex-wrap:wrap; gap:clamp(28px,5vw,72px); align-items:center;">
-          <div style="flex:1 1 340px; min-width:0;">
-            <div style="font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:clamp(70px,11vw,150px); line-height:.8; letter-spacing:-.04em; color:transparent; -webkit-text-stroke:2px var(--accent); margin-bottom:10px;">{{ p.number }}</div>
-            <h3 style="font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:clamp(34px,5.2vw,68px); line-height:.98; letter-spacing:-.03em; margin:0 0 14px;" style-hover="color:var(--accent) !important;">{{ p.title }}</h3>
-            <div style="font-family:'Space Mono',monospace; font-size:13px; letter-spacing:.06em; opacity:.6; margin-bottom:18px;">{{ p.role }} · {{ p.year }}</div>
-            <p style="font-size:clamp(15px,1.6vw,18px); line-height:1.6; max-width:440px; margin:0 0 22px; color:#2a2a2a;">{{ p.desc }}</p>
-            <div style="display:flex; flex-wrap:wrap; gap:10px;">
-              <sc-for list="{{ p.tags }}" as="tag" hint-placeholder-count="3">
-                <span style="font-family:'Space Mono',monospace; font-size:12px; letter-spacing:.04em; padding:7px 14px; border-radius:100px; border:1.5px solid var(--accent); color:var(--accent);">{{ tag }}</span>
-              </sc-for>
+        <div class="nn-cell" data-reveal style="grid-column:span {{ p.span }}; opacity:0; transform:translateY(44px); transition:opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1);">
+          <article class="nn-card {{ p.cls }}" role="button" tabindex="0" onClick="{{ p.open }}" style="--accent: {{ p.accent }};">
+            <div class="nn-media">
+              <img class="nn-img" src="{{ p.img }}" alt="{{ p.title }}" loading="lazy">
+              <span class="nn-badge nn-mono">{{ p.number }}</span>
+              <img class="nn-tape" src="{{ p.tape }}" alt="" style="display:{{ p.tapeShow }};">
+              <div class="nn-pst" style="display:{{ p.stkShow }};">
+                <img src="{{ p.stk }}" alt="" style="display:block; width:100%; height:auto;">
+                <span class="nn-stk-txt nn-hand" style="color:#fff; font-size:21px; display:{{ p.stkTxtShow }};">{{ t.work.new }}</span>
+              </div>
             </div>
-          </div>
-          <div onClick="{{ p.open }}" role="button" style="flex:1 1 340px; min-width:0; width:100%; border-radius:18px; overflow:hidden; background:#141414; box-shadow:0 30px 60px -28px rgba(20,20,20,.4); position:relative; cursor:pointer;">
-            <div style="position:absolute; inset:0; background:var(--accent); opacity:.0; mix-blend-mode:multiply; transition:opacity .4s; pointer-events:none; z-index:2;" style-hover="opacity:.14 !important;"></div>
-            <span style="position:absolute; z-index:3; bottom:14px; right:14px; font-family:'Space Mono',monospace; font-size:12px; font-weight:700; letter-spacing:.04em; background:rgba(255,255,255,.94); color:#141414; padding:8px 14px; border-radius:100px; display:inline-flex; align-items:center; gap:6px; pointer-events:none;">{{ t.work.view }} <span>↗</span></span>
-            <img src="{{ p.img }}" alt="{{ p.title }}" loading="lazy" style="display:block; width:100%; height:clamp(300px,42vw,560px); object-fit:cover; transition:transform .6s cubic-bezier(.2,.7,.2,1);" style-hover="transform:scale(1.05) !important;">
-          </div>
-        </article>
+            <div class="nn-body">
+              <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:14px;">
+                <h3 class="nn-ttl">{{ p.title }}</h3>
+                <span class="nn-go">↗</span>
+              </div>
+              <div class="nn-mono" style="font-size:12.5px; letter-spacing:.05em; opacity:.6;">{{ p.role }} · {{ p.year }}</div>
+              <p style="font-size:clamp(15px,1.5vw,17px); line-height:1.58; margin:4px 0 8px; color:#2a2a2a; max-width:520px;">{{ p.desc }}</p>
+              <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:auto;">
+                <sc-for list="{{ p.tags }}" as="tag" hint-placeholder-count="3">
+                  <span class="nn-tag">{{ tag }}</span>
+                </sc-for>
+              </div>
+            </div>
+          </article>
+        </div>
       </sc-for>
     </div>
   </section>
 
   <!-- ABOUT -->
-  <section id="about" data-screen-label="Sobre mí" style="background:#141414; color:var(--paper,#F4EFE6); padding:clamp(70px,10vw,150px) clamp(20px,5vw,64px);">
-    <div style="max-width:1500px; margin:0 auto; display:flex; flex-wrap:wrap; gap:clamp(40px,6vw,90px); align-items:flex-start;">
-      <div data-reveal style="opacity:0; transform:translateY(40px); transition:opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); flex:1 1 320px; max-width:460px; position:relative;">
-        <div style="position:absolute; inset:-14px -14px 18px 14px; border:2px solid var(--brand,#FF2E88); border-radius:20px; z-index:0;"></div>
-        <img src="assets/foto-flores.jpeg" alt="Constanza Hernández" style="position:relative; z-index:1; display:block; width:100%; border-radius:18px; object-fit:cover; aspect-ratio:4/5;">
-        <div style="position:absolute; z-index:2; bottom:-18px; right:-10px; background:var(--brand,#FF2E88); color:#141414; font-family:'Space Mono',monospace; font-weight:700; font-size:13px; padding:10px 16px; border-radius:100px; transform:rotate(-4deg);">@nini</div>
+  <section id="about" class="nn-dots-dark" data-screen-label="Sobre mí" style="background-color:#141414; color:var(--paper,#F4EFE6); padding:clamp(80px,10vw,150px) clamp(20px,5vw,64px); position:relative; overflow:hidden;">
+    <div style="position:absolute; top:-10%; right:-8%; width:clamp(240px,36vw,520px); height:clamp(240px,36vw,520px); background:var(--violet,#7A3CFF); opacity:.28; filter:blur(70px); animation:nn-blob 18s ease-in-out infinite; pointer-events:none;"></div>
+    <div style="position:relative; z-index:2; max-width:1500px; margin:0 auto; display:flex; flex-wrap:wrap; gap:clamp(48px,7vw,100px); align-items:flex-start;">
+      <div data-reveal style="opacity:0; transform:translateY(40px); transition:opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); flex:1 1 320px; max-width:430px; position:relative; padding:10px 14px 30px;">
+        <div class="nn-polaroid">
+          <img class="nn-tape" src="assets/stickers/tape-pink.svg" alt="" style="left:50%; right:auto; top:-14px; margin-left:-55px; transform:rotate(-4deg);">
+          <img src="assets/foto-flores.jpeg" alt="Constanza Hernández" style="display:block; width:100%; aspect-ratio:4/5; object-fit:cover; border-radius:3px;">
+          <div class="nn-hand" style="position:absolute; left:0; right:0; bottom:14px; text-align:center; color:#141414; font-size:30px; line-height:1;">{{ t.about.note }}</div>
+        </div>
+        <div class="nn-stk" data-drag style="--r:12deg; top:-18px; right:-4px; width:82px;"><img src="assets/stickers/sticker-heart.svg" alt=""></div>
+        <div class="nn-stk" data-drag style="--r:-10deg; bottom:6px; right:-6px; width:78px;"><img src="assets/stickers/sticker-smile.svg" alt=""></div>
+        <div style="position:absolute; z-index:5; bottom:0; left:-6px; background:var(--brand,#FF2E88); color:#141414; font-family:'Space Mono',monospace; font-weight:700; font-size:13px; padding:10px 16px; border-radius:100px; transform:rotate(-5deg);">@nini</div>
       </div>
-      <div data-reveal style="opacity:0; transform:translateY(40px); transition:opacity .7s .1s cubic-bezier(.2,.7,.2,1), transform .7s .1s cubic-bezier(.2,.7,.2,1); flex:2 1 420px;">
-        <div style="font-family:'Space Mono',monospace; font-size:13px; letter-spacing:.2em; text-transform:uppercase; color:var(--brand,#FF2E88); margin-bottom:18px;">{{ t.about.kicker }}</div>
-        <h2 style="font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:clamp(34px,5vw,64px); line-height:1.02; letter-spacing:-.03em; margin:0 0 26px;">{{ t.about.title }}</h2>
-        <p style="font-size:clamp(16px,1.8vw,20px); line-height:1.6; max-width:620px; margin:0 0 18px; opacity:.9;">{{ t.about.body }}</p>
-        <p style="font-size:clamp(16px,1.8vw,20px); line-height:1.6; max-width:620px; margin:0 0 36px; opacity:.9;">{{ t.about.body2 }}</p>
 
-        <div style="display:flex; flex-wrap:wrap; gap:36px;">
-          <div style="flex:1 1 240px;">
-            <div style="font-family:'Space Mono',monospace; font-size:12px; letter-spacing:.14em; text-transform:uppercase; opacity:.55; margin-bottom:14px;">{{ t.about.wordsTitle }}</div>
-            <div style="display:flex; flex-wrap:wrap; gap:10px;">
-              <sc-for list="{{ t.about.words }}" as="word" hint-placeholder-count="5">
-                <span style="font-family:'Bricolage Grotesque',sans-serif; font-weight:600; font-size:clamp(16px,1.8vw,20px); padding:8px 16px; border-radius:100px; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.16);">{{ word }}</span>
-              </sc-for>
+      <div data-reveal style="opacity:0; transform:translateY(40px); transition:opacity .7s .1s cubic-bezier(.2,.7,.2,1), transform .7s .1s cubic-bezier(.2,.7,.2,1); flex:2 1 460px; min-width:0;">
+        <div class="nn-mono" style="font-size:13px; letter-spacing:.2em; text-transform:uppercase; color:var(--brand,#FF2E88); margin-bottom:18px;">{{ t.about.kicker }}</div>
+        <h2 class="nn-disp" style="font-weight:700; font-size:clamp(36px,5.2vw,70px); line-height:1; letter-spacing:-.035em; margin:0 0 26px;">{{ t.about.title }}</h2>
+        <p style="font-size:clamp(16px,1.8vw,20px); line-height:1.6; max-width:640px; margin:0 0 16px; opacity:.9;">{{ t.about.body }}</p>
+        <p style="font-size:clamp(16px,1.8vw,20px); line-height:1.6; max-width:640px; margin:0 0 38px; opacity:.9;">{{ t.about.body2 }}</p>
+
+        <div class="nn-mono" style="font-size:12px; letter-spacing:.14em; text-transform:uppercase; opacity:.55; margin-bottom:14px;">{{ t.about.skillsTitle }}</div>
+        <div class="nn-bento" style="margin-bottom:36px;">
+          <sc-for list="{{ skillCards }}" as="s" hint-placeholder-count="4">
+            <div class="nn-mini">
+              <div class="nn-mono" style="font-size:12px; color:var(--brand,#FF2E88); margin-bottom:22px;">{{ s.n }}</div>
+              <div class="nn-disp" style="font-weight:700; font-size:clamp(20px,2.2vw,28px); letter-spacing:-.02em; line-height:1.05;">{{ s.label }}</div>
             </div>
-          </div>
-          <div style="flex:1 1 200px;">
-            <div style="font-family:'Space Mono',monospace; font-size:12px; letter-spacing:.14em; text-transform:uppercase; opacity:.55; margin-bottom:14px;">{{ t.about.skillsTitle }}</div>
-            <div style="display:flex; flex-direction:column; gap:10px;">
-              <sc-for list="{{ t.about.skills }}" as="sk" hint-placeholder-count="4">
-                <div style="display:flex; align-items:center; gap:12px; font-size:clamp(17px,2vw,22px); font-weight:600;"><span style="width:8px; height:8px; border-radius:50%; background:var(--brand,#FF2E88); flex:none;"></span>{{ sk }}</div>
-              </sc-for>
-            </div>
-          </div>
+          </sc-for>
+        </div>
+
+        <div class="nn-mono" style="font-size:12px; letter-spacing:.14em; text-transform:uppercase; opacity:.55; margin-bottom:14px;">{{ t.about.wordsTitle }}</div>
+        <div style="display:flex; flex-wrap:wrap; gap:10px;">
+          <sc-for list="{{ t.about.words }}" as="word" hint-placeholder-count="5">
+            <span class="nn-word">{{ word }}</span>
+          </sc-for>
         </div>
       </div>
     </div>
   </section>
 
   <!-- CONTACT -->
-  <section id="contact" data-screen-label="Contacto" style="padding:clamp(80px,12vw,180px) clamp(20px,5vw,64px); text-align:center; position:relative; overflow:hidden;">
-    <div style="position:absolute; top:10%; left:50%; transform:translateX(-50%); width:clamp(240px,40vw,560px); height:clamp(240px,40vw,560px); background:var(--brand,#FF2E88); opacity:.12; animation:nm-blob 16s ease-in-out infinite; z-index:0;"></div>
+  <section id="contact" class="nn-dots" data-screen-label="Contacto" style="padding:clamp(90px,12vw,190px) clamp(20px,5vw,64px); text-align:center; position:relative; overflow:hidden;">
+    <div style="position:absolute; top:6%; left:50%; transform:translateX(-50%); width:clamp(260px,44vw,620px); height:clamp(260px,44vw,620px); background:linear-gradient(135deg, var(--brand,#FF2E88), var(--violet,#7A3CFF)); opacity:.18; filter:blur(50px); animation:nn-blob 16s ease-in-out infinite; z-index:0;"></div>
     <div data-reveal style="position:relative; z-index:2; opacity:0; transform:translateY(40px); transition:opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); max-width:1000px; margin:0 auto;">
-      <div style="font-family:'Space Mono',monospace; font-size:13px; letter-spacing:.2em; text-transform:uppercase; color:var(--brand,#FF2E88); margin-bottom:22px;">{{ t.contact.kicker }}</div>
-      <h2 style="font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:clamp(46px,10vw,150px); line-height:.9; letter-spacing:-.04em; margin:0 0 28px;">{{ t.contact.title }}</h2>
-      <p style="font-size:clamp(17px,2vw,22px); line-height:1.55; max-width:560px; margin:0 auto 44px; color:#2a2a2a;">{{ t.contact.body }}</p>
-      <div style="display:flex; flex-wrap:wrap; gap:14px; justify-content:center; align-items:center;">
-        <a href="https://www.linkedin.com/in/constanza-hern%C3%A1ndez-453026366" target="_blank" rel="noopener" style="font-size:16px; font-weight:600; background:#141414; color:#fff; text-decoration:none; padding:16px 30px; border-radius:100px; display:inline-flex; align-items:center; gap:10px;" style-hover="background:var(--brand,#FF2E88) !important; transform:translateY(-2px) !important;">{{ t.contact.linkedin }} <span>↗</span></a>
-<a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=constanza.her.can@gmail.com&amp;su=Trabajemos%20juntos%3F" target="_blank" rel="noopener" style="font-size:16px; font-weight:600; color:#141414; text-decoration:none; padding:16px 30px; border-radius:100px; border:1.5px solid #141414; display:inline-flex; align-items:center; gap:10px;" style-hover="background:#141414 !important; color:var(--paper,#F4EFE6) !important;">{{ t.contact.email }} <span>✉</span></a>
-<a href="assets/cv.pdf" download="CV_Constanza_Hernandez.pdf" style="font-size:16px; font-weight:600; color:#141414; text-decoration:none; padding:16px 30px; border-radius:100px; border:1.5px solid #141414; display:inline-flex; align-items:center; gap:10px;" style-hover="background:#141414 !important; color:var(--paper,#F4EFE6) !important;">{{ t.contact.cv }} <span>↓</span></a>
+      <div class="nn-mono" style="font-size:13px; letter-spacing:.2em; text-transform:uppercase; color:var(--brand,#FF2E88); margin-bottom:22px;">{{ t.contact.kicker }}</div>
+      <div style="position:relative; display:inline-block;">
+        <h2 class="nn-disp" style="font-weight:800; font-size:clamp(46px,10vw,150px); line-height:.9; letter-spacing:-.045em; margin:0 0 30px;">{{ t.contact.title }}</h2>
+        <img class="nn-hide-sm" src="assets/stickers/sparkle-lime.svg" alt="" style="position:absolute; right:-7%; top:-14%; width:clamp(44px,6vw,84px); animation:nn-spin 16s linear infinite; pointer-events:none;">
       </div>
-      <div style="font-family:'Space Mono',monospace; font-size:12px; letter-spacing:.06em; opacity:.5; margin-top:24px;">{{ t.contact.note }}</div>
+      <p style="font-size:clamp(17px,2vw,22px); line-height:1.55; max-width:560px; margin:0 auto 42px; color:#2a2a2a;">{{ t.contact.body }}</p>
+      <div style="display:flex; flex-wrap:wrap; gap:12px; justify-content:center; align-items:center;">
+        <a class="nn-pill nn-pill-dark" href="https://www.linkedin.com/in/constanza-hern%C3%A1ndez-453026366" target="_blank" rel="noopener" style="padding:16px 30px;">{{ t.contact.linkedin }} <span>↗</span></a>
+        <a class="nn-pill nn-pill-line" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=constanza.her.can@gmail.com&amp;su=Trabajemos%20juntos%3F" target="_blank" rel="noopener" style="padding:16px 30px;">{{ t.contact.email }} <span>✉</span></a>
+        <a class="nn-pill nn-pill-line" href="assets/cv.pdf" download="CV_Constanza_Hernandez.pdf" style="padding:16px 30px;">{{ t.contact.cv }} <span>↓</span></a>
+      </div>
+      <div class="nn-mono" style="font-size:12px; letter-spacing:.06em; opacity:.5; margin-top:26px;">{{ t.contact.note }}</div>
+    </div>
+    <div class="nn-stk" data-drag style="--r:-12deg; left:8%; top:22%; width:clamp(70px,9vw,110px);"><img src="assets/stickers/sticker-bolt.svg" alt=""></div>
+    <div class="nn-stk" data-drag style="--r:10deg; right:9%; bottom:18%; width:clamp(70px,9vw,110px);"><img src="assets/stickers/sticker-smile.svg" alt=""></div>
+    <div class="nn-hide-sm" style="position:absolute; z-index:3; left:12%; bottom:24%; display:flex; align-items:flex-start; gap:6px; pointer-events:none;">
+      <span class="nn-hand" style="font-size:32px; line-height:1; transform:rotate(-6deg); margin-top:34px;">{{ t.contact.psst }}</span>
+      <img src="assets/stickers/arrow.svg" alt="" style="width:82px; height:auto; transform:rotate(58deg);">
     </div>
   </section>
 
   <!-- GALLERY MODAL -->
   <sc-if value="{{ modalOpen }}" hint-placeholder-val="{{ false }}">
-    <div onClick="{{ closeModal }}" style="position:fixed; inset:0; z-index:100; background:rgba(12,12,12,.9); backdrop-filter:blur(8px); overflow-y:auto; -webkit-overflow-scrolling:touch;">
-      <div style="position:sticky; top:0; z-index:3; display:flex; align-items:center; justify-content:space-between; gap:16px; padding:18px clamp(18px,5vw,48px); background:linear-gradient(rgba(12,12,12,.95), rgba(12,12,12,0));">
+    <div onClick="{{ closeModal }}" style="position:fixed; inset:0; z-index:100; background:rgba(12,12,12,.92); backdrop-filter:blur(10px); overflow-y:auto; -webkit-overflow-scrolling:touch;">
+      <div style="position:sticky; top:0; z-index:3; display:flex; align-items:center; justify-content:space-between; gap:16px; padding:18px clamp(18px,5vw,48px); background:linear-gradient(rgba(12,12,12,.96), rgba(12,12,12,0));">
         <div style="min-width:0;">
-          <div style="font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:clamp(20px,3.4vw,34px); color:#fff; letter-spacing:-.02em; line-height:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ modalTitle }}</div>
-          <div style="font-family:'Space Mono',monospace; font-size:12px; letter-spacing:.05em; color:rgba(255,255,255,.6); margin-top:6px;">{{ modalRole }}</div>
+          <div class="nn-disp" style="font-weight:700; font-size:clamp(20px,3.4vw,34px); color:#fff; letter-spacing:-.02em; line-height:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ modalTitle }}</div>
+          <div class="nn-mono" style="font-size:12px; letter-spacing:.05em; color:rgba(255,255,255,.6); margin-top:6px;">{{ modalRole }}</div>
         </div>
         <button onClick="{{ closeModal }}" aria-label="Cerrar" style="flex:none; cursor:pointer; width:46px; height:46px; border-radius:50%; border:none; background:#fff; color:#141414; font-size:18px; font-weight:700; display:flex; align-items:center; justify-content:center;" style-hover="background:var(--brand,#FF2E88) !important; color:#fff !important;">✕</button>
       </div>
       <div onClick="{{ stop }}" style="max-width:920px; margin:0 auto; padding:4px clamp(14px,4vw,28px) clamp(60px,10vw,120px); display:flex; flex-direction:column; gap:clamp(14px,2vw,22px);">
         {{ modalGallery }}
-        <div onClick="{{ closeModal }}" style="text-align:center; font-family:'Space Mono',monospace; font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,.45); cursor:pointer; padding-top:8px;">Esc · cerrar</div>
+        <div onClick="{{ closeModal }}" class="nn-mono" style="text-align:center; font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,.45); cursor:pointer; padding-top:8px;">Esc · {{ t.work.close }}</div>
       </div>
     </div>
   </sc-if>
 
   <!-- FOOTER -->
   <footer style="border-top:1px solid rgba(20,20,20,.12); padding:30px clamp(20px,5vw,64px); display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between;">
-    <span style="font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:20px; letter-spacing:-.03em;">nini<span style="color:var(--brand,#FF2E88);">.</span></span>
-    <span style="font-family:'Space Mono',monospace; font-size:12px; letter-spacing:.04em; opacity:.6;">{{ t.footer }} · © 2025</span>
+    <span class="nn-disp" style="font-weight:800; font-size:20px; letter-spacing:-.03em;">nini<span style="color:var(--brand,#FF2E88);">.</span></span>
+    <span class="nn-mono" style="font-size:12px; letter-spacing:.04em; opacity:.6;">{{ t.footer }} · © 2026</span>
   </footer>
 </div>
 </x-dc>
@@ -262,6 +414,47 @@ class Component extends DCLogic {
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
     this.observe();
+    this.setupFx();
+  }
+  componentWillUnmount() {
+    window.removeEventListener('keydown', this._onKey);
+    if (this.io) this.io.disconnect();
+    (this._fx || []).forEach(off => off());
+  }
+  setupFx() {
+    this._fx = [];
+    const on = (target, ev, fn) => { target.addEventListener(ev, fn); this._fx.push(() => target.removeEventListener(ev, fn)); };
+    // luz que sigue al cursor en el hero
+    const hero = document.getElementById('top');
+    if (hero) on(hero, 'pointermove', (e) => {
+      const r = hero.getBoundingClientRect();
+      hero.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      hero.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    });
+    // stickers que se pueden mover con el mouse o el dedo
+    on(document, 'pointerdown', (e) => {
+      const el = e.target && e.target.closest ? e.target.closest('[data-drag]') : null;
+      if (!el) return;
+      e.preventDefault();
+      const sx = e.clientX, sy = e.clientY;
+      const ox = parseFloat(el.style.getPropertyValue('--dx')) || 0;
+      const oy = parseFloat(el.style.getPropertyValue('--dy')) || 0;
+      el.classList.add('is-drag');
+      try { el.setPointerCapture(e.pointerId); } catch (err) {}
+      const move = (ev) => {
+        el.style.setProperty('--dx', (ox + ev.clientX - sx) + 'px');
+        el.style.setProperty('--dy', (oy + ev.clientY - sy) + 'px');
+      };
+      const up = () => {
+        el.classList.remove('is-drag');
+        el.removeEventListener('pointermove', move);
+        el.removeEventListener('pointerup', up);
+        el.removeEventListener('pointercancel', up);
+      };
+      el.addEventListener('pointermove', move);
+      el.addEventListener('pointerup', up);
+      el.addEventListener('pointercancel', up);
+    });
   }
   componentDidUpdate() { this.observe(); }
   observe() {
@@ -288,6 +481,7 @@ class Component extends DCLogic {
 
   galleries() {
     return [
+      ['assets/neceser/n01.jpg', 'assets/neceser/n02.jpg', 'assets/neceser/n03.jpg', 'assets/neceser/n04.jpg', 'assets/neceser/n05.jpg', 'assets/neceser/n06.jpg'],
       ['assets/sj/web01.jpg', 'assets/sj/web02.jpg', 'assets/sj/web03.jpg', 'assets/sj/web04.jpg', 'assets/sj/web05.jpg', 'assets/sj/web06.jpg', 'assets/sj/web07.jpg', 'assets/sj/web08.jpg', 'assets/sj/web09.jpg', 'assets/sj/sj_post_latam.jpg', 'assets/sj/invit1.jpg', 'assets/sj/invit2.jpg', 'assets/sj/invit3.jpg'],
       ['assets/hd/a18.jpg', 'assets/hd/a17.jpg'],
       ['assets/hd/a16.jpg', 'assets/hd/a15.jpg'],
@@ -301,14 +495,15 @@ class Component extends DCLogic {
 
   base() {
     return [
-      { accent: '#EF8A17', img: 'assets/sj/web01.jpg', dir: 'row',         year: '2025' },
-      { accent: '#2F8F4E', img: 'assets/hd/a18.jpg', dir: 'row',         year: '2025' },
-      { accent: '#2433C9', img: 'assets/hd/a16.jpg', dir: 'row-reverse', year: '2024' },
-      { accent: '#4AA13F', img: 'assets/hd/a14.jpg', dir: 'row',         year: '2024' },
-      { accent: '#E0331C', img: 'assets/hd/a09.jpg', dir: 'row-reverse', year: '2023' },
-      { accent: '#16B6A4', img: 'assets/hd/a07.jpg', dir: 'row',         year: '2023' },
-      { accent: '#1F7A1F', img: 'assets/hd/a03.jpg', dir: 'row-reverse', year: '2023' },
-      { accent: '#C341E0', img: 'assets/hd/a00.jpg', dir: 'row',         year: '2022' }
+      { accent: '#FF2E88', img: 'assets/neceser/n01.jpg', year: '2026', span: 12, feat: true, stk: 'sticker-burst-mag', stkTxt: true },
+      { accent: '#EF8A17', img: 'assets/sj/web01.jpg', year: '2025', span: 7, tape: 'tape-pink' },
+      { accent: '#2F8F4E', img: 'assets/hd/a18.jpg', year: '2025', span: 5, tape: 'tape-violet' },
+      { accent: '#2433C9', img: 'assets/hd/a16.jpg', year: '2024', span: 5, stk: 'sparkle-lime' },
+      { accent: '#4AA13F', img: 'assets/hd/a14.jpg', year: '2024', span: 7, tape: 'tape-lime', stk: 'sticker-smile' },
+      { accent: '#E0331C', img: 'assets/hd/a09.jpg', year: '2023', span: 4, tape: 'tape-pink' },
+      { accent: '#16B6A4', img: 'assets/hd/a07.jpg', year: '2023', span: 4, stk: 'sticker-bolt' },
+      { accent: '#1F7A1F', img: 'assets/hd/a03.jpg', year: '2023', span: 4 },
+      { accent: '#C341E0', img: 'assets/hd/a00.jpg', year: '2022', span: 12, feat: true, rev: true }
     ];
   }
 
@@ -318,23 +513,25 @@ class Component extends DCLogic {
         nav: { projects: 'Proyectos', about: 'Sobre mí', contact: 'Contacto' },
         hero: {
           role: 'Diseñadora gráfica', tagline: 'enfocada en lo digital',
-          intro: '¡Hola! Soy Constanza, me dicen nini. Diseño experiencias UX/UI, front-end y contenido para redes — y me apasiona enseñar diseño.',
-          cta: 'Ver proyectos', cta2: 'Hablemos', meta: '22 años · Chilena · constante'
+          intro: '¡Hola! Soy Constanza, me dicen nini. Diseño experiencias UX/UI y contenido para redes, me apoyo en la IA para crear mejor y me apasiona enseñar diseño.',
+          cta: 'Ver proyectos', cta2: 'Hablemos', meta: '22 años · Chilena · constante',
+          status: 'Disponible para proyectos · Santiago, Chile', cardRole: 'Diseñadora UX/UI', variants: 'Especialidades', hi: 'hola!', me: 'esa soy yo',
+          rows: [{ k: 'Foco', v: 'UX/UI, IA y contenido' }, { k: 'Base', v: 'Santiago, Chile' }, { k: 'Perfil', v: '22 años · Chilena · constante' }]
         },
-        marquee: ['UX/UI', 'Front-end', 'RRSS', 'Docencia', 'Prototipado', 'Branding'],
-        work: { title: 'Proyectos', kicker: 'Selección de trabajos', view: 'Ampliar' },
+        marquee: ['UX/UI', 'Diseño con IA', 'RRSS', 'Docencia', 'Prototipado', 'Branding'],
+        work: { title: 'Proyectos', kicker: 'Selección de trabajos', view: 'Ampliar', new: 'nuevo', close: 'cerrar' },
         about: {
-          kicker: 'Sobre mí',
+          kicker: 'Sobre mí', note: 'con cariño, nini',
           title: 'Diseño con cabeza y con corazón.',
-          body: 'Soy una diseñadora gráfica chilena enfocada en lo digital: UX/UI, front-end y redes sociales. Me muevo entre la estrategia y el detalle, siempre con ganas de aprender algo nuevo.',
+          body: 'Soy una diseñadora gráfica chilena enfocada en lo digital: UX/UI, redes sociales y diseño apoyado en IA. Me muevo entre la estrategia y el detalle, siempre con ganas de aprender algo nuevo.',
           body2: 'Además me apasiona la docencia en diseño: explicar, acompañar y ver crecer a otras personas es parte de quién soy.',
           wordsTitle: 'Cómo soy', words: ['Energética', 'Ambiciosa', 'Detallista', 'Empática', 'Con ganas de aprender'],
-          skillsTitle: 'Qué hago', skills: ['UX/UI', 'Front-end', 'RRSS & contenido', 'Docencia']
+          skillsTitle: 'Qué hago', skills: ['UX/UI', 'Diseño con IA', 'RRSS & contenido', 'Docencia']
         },
         contact: {
           kicker: 'Contacto', title: '¿Trabajamos juntas?',
           body: 'Si tienes una idea en mente o quieres trabajar conmigo, no dudes en acercarte. Me encantan los proyectos con propósito.',
-          linkedin: 'LinkedIn', email: 'Escríbeme', cv: 'Descargar CV', note: 'Más enlaces muy pronto'
+          linkedin: 'LinkedIn', email: 'Escríbeme', cv: 'Descargar CV', note: 'Más enlaces muy pronto', psst: 'psst... escríbeme'
         },
         footer: 'Hecho con cariño por nini'
       },
@@ -342,23 +539,25 @@ class Component extends DCLogic {
         nav: { projects: 'Work', about: 'About', contact: 'Contact' },
         hero: {
           role: 'Graphic designer', tagline: 'focused on digital',
-          intro: 'Hi! I\u2019m Constanza, people call me nini. I design UX/UI experiences, front-end and social content — and I love teaching design.',
-          cta: 'See work', cta2: 'Let\u2019s talk', meta: '22 y/o · Chilean · constant'
+          intro: 'Hi! I\u2019m Constanza, people call me nini. I design UX/UI experiences and social content, I use AI to create better, and I love teaching design.',
+          cta: 'See work', cta2: 'Let\u2019s talk', meta: '22 y/o · Chilean · constant',
+          status: 'Open to projects · Santiago, Chile', cardRole: 'UX/UI Designer', variants: 'Specialties', hi: 'hi!', me: 'that\u2019s me',
+          rows: [{ k: 'Focus', v: 'UX/UI, AI and content' }, { k: 'Base', v: 'Santiago, Chile' }, { k: 'Profile', v: '22 y/o · Chilean · constant' }]
         },
-        marquee: ['UX/UI', 'Front-end', 'Social', 'Teaching', 'Prototyping', 'Branding'],
-        work: { title: 'Work', kicker: 'Selected projects', view: 'Expand' },
+        marquee: ['UX/UI', 'Design with AI', 'Social', 'Teaching', 'Prototyping', 'Branding'],
+        work: { title: 'Work', kicker: 'Selected projects', view: 'Expand', new: 'new', close: 'close' },
         about: {
-          kicker: 'About me',
+          kicker: 'About me', note: 'with love, nini',
           title: 'Design with head and heart.',
-          body: 'I\u2019m a Chilean graphic designer focused on digital: UX/UI, front-end and social media. I move between strategy and detail, always eager to learn something new.',
+          body: 'I\u2019m a Chilean graphic designer focused on digital: UX/UI, social media and AI-assisted design. I move between strategy and detail, always eager to learn something new.',
           body2: 'I\u2019m also passionate about teaching design: explaining, mentoring and watching others grow is part of who I am.',
           wordsTitle: 'Who I am', words: ['Energetic', 'Ambitious', 'Detail-driven', 'Empathetic', 'Always learning'],
-          skillsTitle: 'What I do', skills: ['UX/UI', 'Front-end', 'Social & content', 'Teaching']
+          skillsTitle: 'What I do', skills: ['UX/UI', 'Design with AI', 'Social & content', 'Teaching']
         },
         contact: {
           kicker: 'Contact', title: 'Shall we work together?',
           body: 'If you have an idea in mind or want to work with me, don\u2019t hesitate to reach out. I love projects with purpose.',
-          linkedin: 'LinkedIn', email: 'Email me', cv: 'Download CV', note: 'More links coming soon'
+          linkedin: 'LinkedIn', email: 'Email me', cv: 'Download CV', note: 'More links coming soon', psst: 'psst... write me'
         },
         footer: 'Made with love by nini'
       }
@@ -368,15 +567,20 @@ class Component extends DCLogic {
   renderVals() {
     const lang = this.state.lang;
     const t = this.dict()[lang];
-    const projects = this.base().map((b, i) => ({
-      ...b,
-      number: String(i + 1).padStart(2, '0'),
-      title: '', desc: '', role: '', tags: []
-    }));
-    // merge localized project copy
+    const baseList = this.base();
     const lp = this.projCopy()[lang];
     const gals = this.galleries();
-    projects.forEach((p, i) => { p.title = lp[i].title; p.desc = lp[i].desc; p.role = lp[i].role; p.tags = lp[i].tags; p.open = () => this.openModal(i); });
+    const S = 'assets/stickers/';
+    const projects = baseList.map((b, i) => ({
+      accent: b.accent, img: b.img, year: b.year, span: b.span,
+      number: String(i + 1).padStart(2, '0'),
+      cls: [b.feat ? 'nn-feat' : '', b.rev ? 'nn-rev' : ''].join(' ').trim(),
+      tape: S + (b.tape || 'tape-pink') + '.svg', tapeShow: b.tape ? 'block' : 'none',
+      stk: S + (b.stk || 'sparkle') + '.svg', stkShow: b.stk ? 'block' : 'none', stkTxtShow: b.stkTxt ? 'flex' : 'none',
+      title: lp[i].title, desc: lp[i].desc, role: lp[i].role, tags: lp[i].tags,
+      open: () => this.openModal(i)
+    }));
+    const skillCards = t.about.skills.map((label, i) => ({ n: String(i + 1).padStart(2, '0'), label }));
 
     const oi = this.state.openIndex;
     return {
@@ -394,6 +598,7 @@ class Component extends DCLogic {
       paper: this.props.paper ?? '#F4EFE6',
       t,
       projects,
+      skillCards,
       projectCount: String(projects.length).padStart(2, '0'),
       marqueeLoop: t.marquee.concat(t.marquee),
       langCurrent: lang.toUpperCase(),
@@ -408,8 +613,9 @@ class Component extends DCLogic {
   projCopy() {
     return {
       es: [
-        { title: 'SmartJob', role: 'Rediseño web · UX/UI', desc: 'Rediseño UX/UI completo del sitio de SmartJob (smartjob.cl), una software factory impulsada por IA presente en LATAM. Desde la investigación y el prototipado hasta el apoyo corporativo y piezas para redes — participando también en el código y la implementación de front-end.', tags: ['UX/UI', 'Front-end', 'Branding'] },
-        { title: 'EcoTours', role: 'Cotourss · UX/UI', desc: 'Diseño y desarrollo de una nueva web para Cotourss centrada en la interacción del usuario: wireframes, prototipado iterativo e implementación en servidor local.', tags: ['UX/UI', 'Wireframes', 'Prototipado'] },
+        { title: 'Neceser', role: 'App · Concepto · UX/UI', desc: 'App de inventario de cosmética pensada para beauty vloggers e influencers. Registra lo que tienes, cuándo lo abriste y cuánto te queda, avisa antes de que algo venza y frena la compra de productos repetidos. Con design system propio.', tags: ['UX/UI', 'Design system', 'App'] },
+        { title: 'SmartJob', role: 'Rediseño web · UX/UI', desc: 'Rediseño UX/UI completo del sitio de SmartJob (smartjob.cl), una software factory impulsada por IA presente en LATAM. Desde la investigación y el prototipado hasta el apoyo corporativo y piezas para redes.', tags: ['UX/UI', 'Prototipado', 'Branding'] },
+        { title: 'EcoTours', role: 'Cotourss · UX/UI', desc: 'Diseño de una nueva web para Cotourss centrada en la interacción del usuario: wireframes y prototipado iterativo.', tags: ['UX/UI', 'Wireframes', 'Prototipado'] },
         { title: 'Omnio Inspector AI', role: 'Landing · IA', desc: 'Landings para una IA que facilita el escaneo y automatiza la inspección vehicular para compañías de seguros, de la contactabilidad al análisis de daños.', tags: ['Landing', 'IA', 'Branding'] },
         { title: 'Parque San Alberto', role: 'UX/UI · Reservas', desc: 'Sitio de reservas para el Parque San Alberto Hurtado: agenda de pérgolas, mapa y normas en una experiencia clara y amable.', tags: ['UX/UI', 'Reservas', 'Web'] },
         { title: 'Portadas Yugen', role: 'Editorial · Japón', desc: 'Proyecto editorial: portadas para la revista ficticia Yugen, que retrata la cultura de Japón y sus aspectos más llamativos a través de tipografía e imagen.', tags: ['Editorial', 'Tipografía', 'Japón'] },
@@ -418,9 +624,10 @@ class Component extends DCLogic {
         { title: 'El Maricón Chileno', role: 'Editorial · Investigación', desc: 'Investigación sobre las palabras usadas para referirse al hombre homosexual entre los 60 y 90 en Chile, llevada a un glosario gráfico con titulares y archivo de prensa.', tags: ['Editorial', 'Investigación', 'Archivo'] }
       ],
       en: [
-        { title: 'SmartJob', role: 'Web redesign · UX/UI', desc: 'Full UX/UI redesign of SmartJob\u2019s website (smartjob.cl), an AI-driven software factory operating across LATAM. From research and prototyping to corporate support and social pieces — also contributing to the code and front-end implementation.', tags: ['UX/UI', 'Front-end', 'Branding'] },
-        { title: 'EcoTours', role: 'Cotourss · UX/UI', desc: 'Design and development of a new website for Cotourss focused on user interaction: wireframes, iterative prototyping and deployment on a local server.', tags: ['UX/UI', 'Wireframes', 'Prototyping'] },
-        { title: 'Omnio Inspector AI', role: 'Landing · AI', desc: 'Landing pages for an AI that simplifies scanning and automates vehicle inspection for insurance companies — from outreach to damage analysis.', tags: ['Landing', 'AI', 'Branding'] },
+        { title: 'Neceser', role: 'App · Concept · UX/UI', desc: 'Cosmetics inventory app designed for beauty vloggers and influencers. It tracks what you own, when you opened it and how much is left, warns you before things expire and stops you from buying duplicates. Built with its own design system.', tags: ['UX/UI', 'Design system', 'App'] },
+        { title: 'SmartJob', role: 'Web redesign · UX/UI', desc: 'Full UX/UI redesign of SmartJob\u2019s website (smartjob.cl), an AI-driven software factory operating across LATAM. From research and prototyping to corporate support and social pieces.', tags: ['UX/UI', 'Prototyping', 'Branding'] },
+        { title: 'EcoTours', role: 'Cotourss · UX/UI', desc: 'Design of a new website for Cotourss focused on user interaction: wireframes and iterative prototyping.', tags: ['UX/UI', 'Wireframes', 'Prototyping'] },
+        { title: 'Omnio Inspector AI', role: 'Landing · AI', desc: 'Landing pages for an AI that simplifies scanning and automates vehicle inspection for insurance companies, from outreach to damage analysis.', tags: ['Landing', 'AI', 'Branding'] },
         { title: 'San Alberto Park', role: 'UX/UI · Booking', desc: 'Booking site for Parque San Alberto Hurtado: pergola scheduling, map and rules in a clear, friendly experience.', tags: ['UX/UI', 'Booking', 'Web'] },
         { title: 'Yugen Covers', role: 'Editorial · Japan', desc: 'Editorial project: covers for the fictional magazine Yugen, portraying Japanese culture and its most striking aspects through type and image.', tags: ['Editorial', 'Typography', 'Japan'] },
         { title: 'Rebranding Shell', role: 'Branding · Concept', desc: 'A Chile 30 years into the future where Shell runs only on sustainable energy. Full rebrand: identity, color and concept.', tags: ['Branding', 'Concept', 'Sustainable'] },
