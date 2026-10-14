@@ -3,6 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/favicon.ico?v=2" sizes="any">
+<link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
 <script src="./support.js"></script>
 </head>
 <body>
@@ -109,17 +112,15 @@
   /* inicio estilo escritorio de Mac */
   .nn-hero-wrap{ position:relative; width:100%; max-width:1500px; margin:0 auto; }
   .nn-center{ position:relative; z-index:3; display:flex; flex-direction:column; align-items:center; text-align:center; }
-  .nn-desk-top{ position:absolute; left:0; right:0; top:-34px; display:flex; justify-content:space-between; font-weight:600; font-size:15px; z-index:3; }
   .nn-stage{ position:relative; margin-top:18px; }
   .nn-wordmark{ font-weight:800; font-size:1em; line-height:.82; letter-spacing:-.05em; margin:0; color:#141414; position:relative; z-index:2; }
 
   .nn-stage{ font-size:clamp(120px,31vw,470px); margin-bottom:.2em; }
   .nn-fd{ position:absolute; left:50%; top:0; width:102%; height:.97em; transform:translateX(-50%); pointer-events:none; z-index:1; }
   .nn-fdf{ z-index:3; }
-  .nn-fb{ position:absolute; left:0; right:0; top:.3em; bottom:0; border-radius:.05em; background:linear-gradient(#69A9DB,#4F90C6); box-shadow:0 .08em .12em -.06em rgba(40,90,140,.5); }
-  .nn-fb::before{ content:""; position:absolute; left:0; top:-.065em; width:.42em; height:.09em; border-radius:.04em .04em 0 0; background:#69A9DB; }
-  .nn-ff{ position:absolute; left:0; right:0; top:.72em; bottom:0; border-radius:.04em .04em .05em .05em; background:linear-gradient(#9BCBF1,#76B3E4); border-top:.008em solid rgba(255,255,255,.8); box-shadow:0 .1em .14em -.06em rgba(40,90,140,.55); }
-    .nn-cursor{ position:absolute; right:-2%; bottom:6%; z-index:4; filter:drop-shadow(0 6px 8px rgba(20,20,20,.25)); }
+  .nn-fb{ position:absolute; left:0; right:0; top:.07em; bottom:0; border-radius:.08em; background:linear-gradient(#7DB8E3,#5B9BCB); box-shadow:0 .1em .16em -.08em rgba(40,90,140,.6), inset 0 .008em 0 rgba(255,255,255,.35); }
+  .nn-fb::before{ content:""; position:absolute; left:0; top:-.07em; width:.42em; height:.12em; border-radius:.05em .05em 0 0; background:linear-gradient(#8DC3EA,#6BAAD8); }
+  .nn-ff{ display:none; }
     .nn-year{ position:absolute; left:0; right:0; top:103%; transform:translateY(-50%); z-index:4; text-align:center; font-weight:500; font-size:clamp(14px,.07em,34px); letter-spacing:.01em; color:#17415f; line-height:1; }
   .nn-hero-copy{ position:relative; z-index:4; margin-top:clamp(22px,3vw,40px); }
   .nn-fold{ position:relative; width:100%; aspect-ratio:1.32/1; }
@@ -185,7 +186,6 @@
     .nn-item{ position:static !important; }
     .nn-m-hide{ display:none !important; }
     .nn-appicon{ width:58px; }
-    .nn-cursor{ width:36px; height:auto; }
     .nn-cell{ grid-column:1 / -1 !important; }
     .nn-card.nn-feat, .nn-card.nn-feat.nn-rev{ flex-direction:column; }
     .nn-card.nn-feat .nn-media{ height:clamp(230px,56vw,420px); min-height:0; flex:none; }
@@ -234,7 +234,6 @@
   <!-- HERO -->
   <header id="top" class="nn-hero nn-bg-a" data-screen-label="Hero">
     <div class="nn-hero-wrap">
-      <div class="nn-desk-top nn-hide-sm"><span>diseño web</span><span>portafolio</span><span>redes sociales</span></div>
       <div class="nn-center">
         <div class="nn-status nn-glass nn-mono"><span class="nn-dot-live"></span>{{ t.hero.status }}</div>
         <div class="nn-stage">
@@ -242,7 +241,6 @@
           <h1 class="nn-wordmark nn-disp">nini<span style="color:var(--brand,#FF2E88);">.</span></h1>
           <div class="nn-fd nn-fdf" aria-hidden="true"><i class="nn-ff"></i></div>
           <div class="nn-year nn-disp">(2026)</div>
-          <svg class="nn-cursor" viewBox="0 0 40 48" width="54" height="64" aria-hidden="true"><path d="M5 3 L5 36 L13 29 L19 43 L25 40.5 L19 27 L30 27 Z" fill="#fff" stroke="#141414" stroke-width="3" stroke-linejoin="round"/></svg>
         </div>
         <div class="nn-hero-copy">
           <div class="nn-mono" style="font-size:clamp(12px,1.3vw,14px); letter-spacing:.2em; text-transform:uppercase; opacity:.65;">{{ t.hero.role }} · {{ t.hero.tagline }}</div>
