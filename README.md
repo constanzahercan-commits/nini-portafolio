@@ -12,9 +12,8 @@ No edites `index.html` a mano, se sobrescribe en cada build.
 
 ## Carpetas
 
-- `assets/` imágenes de proyectos (JPG optimizados), `assets/stickers/` stickers SVG dibujados a mano, `assets/neceser/` láminas del caso Neceser.
+- `assets/` imágenes de proyectos (JPG optimizados), `assets/stickers/` stickers SVG dibujados a mano.
 - `build/` build.py, fuentes embebidas, shell del bundle.
-- `build/neceser/` generador de las láminas de Neceser (HTML/CSS a JPG con Playwright): `python3 build/neceser/gen.py`.
 
 ## Agregar un proyecto
 
